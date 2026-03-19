@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riserva Del Frignano Appartaments - Guest Guide</title>
   <style>
     :root {
@@ -13,7 +13,7 @@
       --accent: #6f7d4e;
       --accent-dark: #56613d;
       --line: #e7dfd4;
-      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
       --radius: 18px;
     }
 
@@ -88,15 +88,27 @@
       margin-top: 4px;
     }
 
-    .lang {
+    .lang-btn {
       display: inline-block;
       padding: 8px 12px;
       border-radius: 999px;
       background: #f2eee7;
       color: var(--text);
+      border: 1px solid transparent;
       text-decoration: none;
       font-weight: 600;
       font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--line);
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
     }
 
     .quick-links {
@@ -218,180 +230,614 @@
       <img src="cover-molino-galeotto.jpg" alt="Riserva Del Frignano Appartaments">
       <div class="hero-content">
         <h1>Riserva Del Frignano Appartaments</h1>
-        <p class="subtitle">Guida Ospiti / Guest Guide</p>
-        <p class="subtitle">Tutte le informazioni utili per un soggiorno semplice e senza pensieri.</p>
+        <p class="subtitle" id="subtitle-1"></p>
+        <p class="subtitle" id="subtitle-2"></p>
       </div>
     </section>
 
     <section class="box">
       <div class="languages">
-        <a class="lang" href="arrival-info-it" target="_blank" rel="noopener noreferrer">Italiano</a>
-        <a class="lang" href="arrival-info-en" target="_blank" rel="noopener noreferrer">English</a>
-        <a class="lang" href="arrival-info-de" target="_blank" rel="noopener noreferrer">Deutsch</a>
-        <a class="lang" href="arrival-info-en" target="_blank" rel="noopener noreferrer">Français</a>
-        <a class="lang" href="arrival-info-en" target="_blank" rel="noopener noreferrer">Español</a>
+        <button class="lang-btn" data-lang="it">Italiano</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="de">Deutsch</button>
+        <button class="lang-btn" data-lang="fr">Français</button>
+        <button class="lang-btn" data-lang="es">Español</button>
       </div>
     </section>
 
     <section class="box">
       <div class="quick-links">
-        <a href="https://www.google.com/maps?q=44.35729,10.82317" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>
+        <a id="map-link" href="https://www.google.com/maps?q=44.35729,10.82317" target="_blank" rel="noopener noreferrer"></a>
       </div>
       <div class="quick-links">
-        <a class="secondary" href="house-rules-it" target="_blank" rel="noopener noreferrer">📄 Regole complete</a>
-        <a class="secondary" href="arrival-info-it" target="_blank" rel="noopener noreferrer">🗝️ Istruzioni dettagliate</a>
+        <a id="rules-link" class="secondary" href="house-rules-it.pdf" target="_blank" rel="noopener noreferrer"></a>
+        <a id="arrival-link" class="secondary" href="arrival-info-it.pdf" target="_blank" rel="noopener noreferrer"></a>
       </div>
     </section>
 
     <section class="box">
       <div class="grid">
         <div class="info-card">
-          <div class="label">📍 Indirizzo</div>
+          <div class="label" id="label-address"></div>
           <div class="value">Via Molino Galeotto 21, Pavullo nel Frignano</div>
         </div>
         <div class="info-card">
-          <div class="label">🕒 Check-in</div>
+          <div class="label" id="label-checkin"></div>
           <div class="value">15:00 - 00:00</div>
         </div>
         <div class="info-card">
-          <div class="label">🚪 Check-out</div>
-          <div class="value">10:00 / 10:30</div>
+          <div class="label" id="label-checkout"></div>
+          <div class="value">10:00 - 10:30</div>
         </div>
         <div class="info-card">
-          <div class="label">🚗 Parcheggio</div>
-          <div class="value">Gratuito in struttura</div>
+          <div class="label" id="label-parking"></div>
+          <div class="value" id="parking-short"></div>
         </div>
         <div class="info-card">
           <div class="label">📶 Wi-Fi</div>
           <div class="value">Riserva del frignano</div>
         </div>
         <div class="info-card">
-          <div class="label">🔐 Password</div>
+          <div class="label" id="label-password"></div>
           <div class="value">Riserva2025</div>
         </div>
       </div>
     </section>
 
     <section class="box">
-      <h2>🗝️ Accesso</h2>
+      <h2 id="access-title"></h2>
+      <p id="access-text"></p>
+      <p class="muted" id="access-note"></p>
+    </section>
+
+    <section class="box">
+      <h2 id="rules-title"></h2>
+      <ul id="rules-list"></ul>
+    </section>
+
+    <section class="box">
+      <h2 id="waste-title"></h2>
+      <p id="waste-text"></p>
+      <p class="muted" id="waste-note"></p>
+    </section>
+
+    <section class="box">
+      <h2 id="checkout-title"></h2>
+      <ul id="checkout-list"></ul>
+    </section>
+
+    <section class="box">
+      <h2 id="docs-title"></h2>
+
+      <h3 id="docs-it-title"></h3>
       <p>
-        L’host indicherà dove trovare le chiavi: direttamente sulla porta oppure nella <strong>keybox</strong>, come specificato nelle istruzioni ricevute prima dell’arrivo.
+        <a href="arrival-info-it.pdf" target="_blank" rel="noopener noreferrer" id="docs-it-arrival"></a> ·
+        <a href="house-rules-it.pdf" target="_blank" rel="noopener noreferrer" id="docs-it-rules"></a>
       </p>
-      <p class="muted">
-        Controlla sempre le istruzioni allegate prima del check-in.
+
+      <h3 id="docs-en-title"></h3>
+      <p>
+        <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer" id="docs-en-arrival"></a> ·
+        <a href="house-rules-en.pdf" target="_blank" rel="noopener noreferrer" id="docs-en-rules"></a>
+      </p>
+
+      <h3 id="docs-de-title"></h3>
+      <p>
+        <a href="arrival-info-de.pdf" target="_blank" rel="noopener noreferrer" id="docs-de-arrival"></a> ·
+        <a href="house-rules-de.pdf" target="_blank" rel="noopener noreferrer" id="docs-de-rules"></a>
+      </p>
+
+      <h3 id="docs-fr-title"></h3>
+      <p id="docs-fr-text"></p>
+
+      <h3 id="docs-es-title"></h3>
+      <p id="docs-es-text"></p>
+
+      <h3 id="docs-extra-title"></h3>
+      <p>
+        <a href="pet-rules.pdf" target="_blank" rel="noopener noreferrer" id="docs-extra-pet"></a> ·
+        <a href="beach-umbrella.pdf" target="_blank" rel="noopener noreferrer" id="docs-extra-umbrella"></a>
       </p>
     </section>
 
     <section class="box">
-      <h2>🏡 Regole casa</h2>
-      <ul>
-        <li>Vietato fumare in tutti gli ambienti.</li>
-        <li>Eventi e feste non sono consentiti.</li>
-        <li>Rispettare l’orario di silenzio dalle 22:00 alle 08:00.</li>
-        <li>Prestare attenzione all’utilizzo contemporaneo degli elettrodomestici.</li>
-        <li>Avere cura di mobili, arredi e complementi dell’appartamento.</li>
-        <li>Lasciare l’appartamento in condizioni decorose per evitare costi extra o segnalazioni.</li>
-        <li>Se accompagnati da animali domestici, leggere attentamente le regole dedicate.</li>
-      </ul>
+      <h2 id="parking-title"></h2>
+      <p id="parking-text"></p>
     </section>
 
     <section class="box">
-      <h2>♻️ Rifiuti</h2>
-      <p>
-        Ti chiediamo di rispettare la raccolta differenziata e di lasciare l’appartamento in ordine.
-      </p>
-      <p class="muted">
-        In caso di dubbi, fai riferimento alle istruzioni presenti in appartamento.
-      </p>
+      <h2 id="suggestions-title"></h2>
+
+      <h3 id="restaurants-title"></h3>
+      <ul id="restaurants-list"></ul>
+
+      <h3 id="attractions-title"></h3>
+      <ul id="attractions-list"></ul>
     </section>
 
     <section class="box">
-      <h2>✅ Prima del check-out</h2>
-      <ul>
-        <li>Lascia l’appartamento in condizioni decorose.</li>
-        <li>Deposita le chiavi dove indicato all’arrivo, sulla porta oppure nella keybox.</li>
-        <li>Controlla di non aver dimenticato effetti personali.</li>
-        <li>Segnala tempestivamente eventuali danni o anomalie riscontrate durante il soggiorno.</li>
-      </ul>
+      <h2 id="map-title"></h2>
+      <p id="map-text"></p>
+      <p><strong id="coords-label"></strong> 44.35729, 10.82317</p>
     </section>
 
-    <section class="box">
-      <h2>📄 Documenti utili</h2>
-
-      <h3>Italiano</h3>
-      <p>
-        <a href="arrival-info-it" target="_blank" rel="noopener noreferrer">Indicazioni arrivo</a> ·
-        <a href="house-rules-it" target="_blank" rel="noopener noreferrer">Regole della casa</a>
-      </p>
-
-      <h3>English</h3>
-      <p>
-        <a href="arrival-info-en" target="_blank" rel="noopener noreferrer">Arrival info</a> ·
-        <a href="house-rules-en" target="_blank" rel="noopener noreferrer">House rules</a>
-      </p>
-
-      <h3>Deutsch</h3>
-      <p>
-        <a href="arrival-info-de" target="_blank" rel="noopener noreferrer">Anreiseinformationen</a> ·
-        <a href="house-rules-de" target="_blank" rel="noopener noreferrer">Hausregeln</a>
-      </p>
-
-      <h3>Français</h3>
-      <p>
-        Utilizza i documenti in <a href="arrival-info-en" target="_blank" rel="noopener noreferrer">inglese</a>.
-      </p>
-
-      <h3>Español</h3>
-      <p>
-        Utiliza los documentos en <a href="arrival-info-en" target="_blank" rel="noopener noreferrer">inglés</a>.
-      </p>
-
-      <h3>Extra</h3>
-      <p>
-        <a href="pet-rules" target="_blank" rel="noopener noreferrer">🐾 Pet rules</a> ·
-        <a href="beach-umbrella" target="_blank" rel="noopener noreferrer">⛱️ Beach umbrella</a>
-      </p>
-    </section>
-
-    <section class="box">
-      <h2>🚗 Parcheggio</h2>
-      <p>Parcheggio gratuito in struttura.</p>
-    </section>
-
-    <section class="box">
-      <h2>🍽️ Suggerimenti in zona</h2>
-
-      <h3>🍴 Ristoranti</h3>
-      <ul>
-        <li><strong>Vecchia Trattoria Romani</strong> — carne, funghi, top.</li>
-        <li><strong>Osteria del Conte</strong> — piatti locali in centro.</li>
-        <li><strong>La Tana di Charly</strong> — atmosfera tipica di montagna.</li>
-        <li><strong>Ristorante La Staffa</strong> — cucina tipica.</li>
-      </ul>
-
-      <h3>🏞️ Attrazioni</h3>
-      <ul>
-        <li><strong>Castello di Montecuccolo</strong> ✅</li>
-        <li><strong>Ponte del Diavolo</strong></li>
-        <li><strong>Sestola</strong></li>
-        <li><strong>Monte Cimone</strong></li>
-        <li><strong>Sassoguidano</strong></li>
-        <li><strong>Maneggio La Staffa</strong> — escursioni e lezioni a cavallo per adulti e bambini.</li>
-      </ul>
-    </section>
-
-    <section class="box">
-      <h2>🗺️ Mappa</h2>
-      <p>
-        Google Maps può mostrare un posizionamento non preciso usando il solo indirizzo testuale. Per questo è preferibile aprire la posizione tramite coordinate.
-      </p>
-      <p><strong>Coordinate:</strong> 44.35729, 10.82317</p>
-    </section>
-
-    <div class="footer">
-      Buon soggiorno a Pavullo nel Frignano
-    </div>
+    <div class="footer" id="footer-text"></div>
 
   </div>
+
+  <script>
+    const translations = {
+      it: {
+        subtitle1: "Guida Ospiti / Guest Guide",
+        subtitle2: "Tutte le informazioni utili per un soggiorno semplice e senza pensieri.",
+        mapBtn: "📍 Google Maps",
+        rulesBtn: "📄 Regole complete",
+        arrivalBtn: "🗝️ Istruzioni dettagliate",
+        labelAddress: "📍 Indirizzo",
+        labelCheckin: "🕒 Check-in",
+        labelCheckout: "🚪 Check-out",
+        labelParking: "🚗 Parcheggio",
+        parkingShort: "Gratuito in struttura",
+        labelPassword: "🔐 Password",
+        accessTitle: "🗝️ Accesso",
+        accessText: "L’host indicherà dove trovare le chiavi: direttamente sulla porta oppure nella keybox, come specificato nelle istruzioni ricevute prima dell’arrivo.",
+        accessNote: "Controlla sempre le istruzioni allegate prima del check-in.",
+        rulesTitle: "🏡 Regole casa",
+        rulesList: [
+          "Vietato fumare in tutti gli ambienti.",
+          "Eventi e feste non sono consentiti.",
+          "Rispettare l’orario di silenzio dalle 22:00 alle 08:00.",
+          "Prestare attenzione all’utilizzo contemporaneo degli elettrodomestici.",
+          "Avere cura di mobili, arredi e complementi dell’appartamento.",
+          "Lasciare l’appartamento in condizioni decorose per evitare costi extra o segnalazioni.",
+          "Se accompagnati da animali domestici, leggere attentamente le regole dedicate."
+        ],
+        wasteTitle: "♻️ Rifiuti",
+        wasteText: "Ti chiediamo di rispettare la raccolta differenziata e di lasciare l’appartamento in ordine.",
+        wasteNote: "In caso di dubbi, fai riferimento alle istruzioni presenti in appartamento.",
+        checkoutTitle: "✅ Prima del check-out",
+        checkoutList: [
+          "Lascia l’appartamento in condizioni decorose.",
+          "Deposita le chiavi dove indicato all’arrivo, sulla porta oppure nella keybox.",
+          "Controlla di non aver dimenticato effetti personali.",
+          "Segnala tempestivamente eventuali danni o anomalie riscontrate durante il soggiorno."
+        ],
+        docsTitle: "📄 Documenti utili",
+        docsItTitle: "Italiano",
+        docsItArrival: "Indicazioni arrivo",
+        docsItRules: "Regole della casa",
+        docsEnTitle: "English",
+        docsEnArrival: "Arrival info",
+        docsEnRules: "House rules",
+        docsDeTitle: "Deutsch",
+        docsDeArrival: "Anreiseinformationen",
+        docsDeRules: "Hausregeln",
+        docsFrTitle: "Français",
+        docsFrText: 'Utilisez les documents en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">anglais</a>.',
+        docsEsTitle: "Español",
+        docsEsText: 'Utiliza los documentos en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">inglés</a>.',
+        docsExtraTitle: "Extra",
+        docsExtraPet: "🐾 Regole animali",
+        docsExtraUmbrella: "⛱️ Istruzioni ombrellone",
+        parkingTitle: "🚗 Parcheggio",
+        parkingText: "Parcheggio gratuito in struttura.",
+        suggestionsTitle: "🍽️ Suggerimenti in zona",
+        restaurantsTitle: "🍴 Ristoranti",
+        restaurantsList: [
+          "<strong>Vecchia Trattoria Romani</strong> — carne, funghi, top.",
+          "<strong>Osteria del Conte</strong> — piatti locali in centro.",
+          "<strong>La Tana di Charly</strong> — atmosfera tipica di montagna.",
+          "<strong>Ristorante La Staffa</strong> — cucina tipica."
+        ],
+        attractionsTitle: "🏞️ Attrazioni",
+        attractionsList: [
+          "<strong>Castello di Montecuccolo</strong> ✅",
+          "<strong>Ponte del Diavolo</strong>",
+          "<strong>Sestola</strong>",
+          "<strong>Monte Cimone</strong>",
+          "<strong>Sassoguidano</strong>",
+          "<strong>Maneggio La Staffa</strong> — escursioni e lezioni a cavallo per adulti e bambini."
+        ],
+        mapTitle: "🗺️ Mappa",
+        mapText: "Google Maps può mostrare un posizionamento non preciso usando il solo indirizzo testuale. Per questo è preferibile aprire la posizione tramite coordinate.",
+        coordsLabel: "Coordinate:",
+        footerText: "Buon soggiorno a Pavullo nel Frignano"
+      },
+      en: {
+        subtitle1: "Guest Guide",
+        subtitle2: "All the useful information for a smooth and worry-free stay.",
+        mapBtn: "📍 Google Maps",
+        rulesBtn: "📄 Full house rules",
+        arrivalBtn: "🗝️ Detailed arrival info",
+        labelAddress: "📍 Address",
+        labelCheckin: "🕒 Check-in",
+        labelCheckout: "🚪 Check-out",
+        labelParking: "🚗 Parking",
+        parkingShort: "Free on-site parking",
+        labelPassword: "🔐 Password",
+        accessTitle: "🗝️ Access",
+        accessText: "The host will tell you where to find the keys: either on the door or in the keybox, as explained in the instructions sent before arrival.",
+        accessNote: "Please always check the attached instructions before check-in.",
+        rulesTitle: "🏡 House rules",
+        rulesList: [
+          "Smoking is not allowed in any area of the apartment.",
+          "Events and parties are not allowed.",
+          "Please respect quiet hours from 10:00 PM to 8:00 AM.",
+          "Please pay attention when using multiple appliances at the same time.",
+          "Please take care of the furniture, furnishings and all apartment items.",
+          "Please leave the apartment in decent condition to avoid extra charges or reports.",
+          "If you are travelling with pets, please read the dedicated pet rules carefully."
+        ],
+        wasteTitle: "♻️ Waste",
+        wasteText: "Please respect waste sorting rules and leave the apartment tidy.",
+        wasteNote: "If you are unsure, please refer to the instructions available in the apartment.",
+        checkoutTitle: "✅ Before check-out",
+        checkoutList: [
+          "Please leave the apartment in decent condition.",
+          "Leave the keys where indicated at arrival, either on the door or in the keybox.",
+          "Check that you have not forgotten any personal belongings.",
+          "Please promptly report any damage or issues noticed during your stay."
+        ],
+        docsTitle: "📄 Useful documents",
+        docsItTitle: "Italiano",
+        docsItArrival: "Arrival info",
+        docsItRules: "House rules",
+        docsEnTitle: "English",
+        docsEnArrival: "Arrival info",
+        docsEnRules: "House rules",
+        docsDeTitle: "Deutsch",
+        docsDeArrival: "Arrival info",
+        docsDeRules: "House rules",
+        docsFrTitle: "Français",
+        docsFrText: 'Please use the documents in <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">English</a>.',
+        docsEsTitle: "Español",
+        docsEsText: 'Please use the documents in <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">English</a>.',
+        docsExtraTitle: "Extra",
+        docsExtraPet: "🐾 Pet rules",
+        docsExtraUmbrella: "⛱️ Beach umbrella instructions",
+        parkingTitle: "🚗 Parking",
+        parkingText: "Free on-site parking.",
+        suggestionsTitle: "🍽️ Local suggestions",
+        restaurantsTitle: "🍴 Restaurants",
+        restaurantsList: [
+          "<strong>Vecchia Trattoria Romani</strong> — meat, mushrooms, top choice.",
+          "<strong>Osteria del Conte</strong> — local dishes in the town centre.",
+          "<strong>La Tana di Charly</strong> — typical mountain atmosphere.",
+          "<strong>Ristorante La Staffa</strong> — traditional local cuisine."
+        ],
+        attractionsTitle: "🏞️ Attractions",
+        attractionsList: [
+          "<strong>Castello di Montecuccolo</strong> ✅",
+          "<strong>Ponte del Diavolo</strong>",
+          "<strong>Sestola</strong>",
+          "<strong>Monte Cimone</strong>",
+          "<strong>Sassoguidano</strong>",
+          "<strong>Maneggio La Staffa</strong> — horseback rides and lessons for adults and children."
+        ],
+        mapTitle: "🗺️ Map",
+        mapText: "Google Maps may show an imprecise location when using only the written address. For this reason, it is better to open the location using coordinates.",
+        coordsLabel: "Coordinates:",
+        footerText: "Enjoy your stay in Pavullo nel Frignano"
+      },
+      de: {
+        subtitle1: "Gästeführer",
+        subtitle2: "Alle nützlichen Informationen für einen einfachen und sorgenfreien Aufenthalt.",
+        mapBtn: "📍 Google Maps",
+        rulesBtn: "📄 Vollständige Hausregeln",
+        arrivalBtn: "🗝️ Detaillierte Anreiseinfos",
+        labelAddress: "📍 Adresse",
+        labelCheckin: "🕒 Check-in",
+        labelCheckout: "🚪 Check-out",
+        labelParking: "🚗 Parkplatz",
+        parkingShort: "Kostenlos vor Ort",
+        labelPassword: "🔐 Passwort",
+        accessTitle: "🗝️ Zugang",
+        accessText: "Der Gastgeber teilt Ihnen mit, wo sich die Schlüssel befinden: entweder an der Tür oder in der Keybox, wie in den vor der Anreise gesendeten Anweisungen beschrieben.",
+        accessNote: "Bitte prüfen Sie vor dem Check-in immer die beigefügten Anweisungen.",
+        rulesTitle: "🏡 Hausregeln",
+        rulesList: [
+          "Rauchen ist in allen Bereichen der Wohnung verboten.",
+          "Veranstaltungen und Partys sind nicht erlaubt.",
+          "Bitte respektieren Sie die Ruhezeiten von 22:00 bis 08:00 Uhr.",
+          "Bitte achten Sie auf die gleichzeitige Nutzung mehrerer Elektrogeräte.",
+          "Bitte gehen Sie sorgfältig mit Möbeln, Einrichtung und allen Gegenständen der Wohnung um.",
+          "Bitte hinterlassen Sie die Wohnung in ordentlichem Zustand, um Zusatzkosten oder Meldungen zu vermeiden.",
+          "Wenn Sie mit Haustieren reisen, lesen Sie bitte die entsprechenden Regeln aufmerksam."
+        ],
+        wasteTitle: "♻️ Müll",
+        wasteText: "Bitte beachten Sie die Mülltrennung und hinterlassen Sie die Wohnung ordentlich.",
+        wasteNote: "Bei Fragen beachten Sie bitte die Anweisungen in der Wohnung.",
+        checkoutTitle: "✅ Vor dem Check-out",
+        checkoutList: [
+          "Bitte hinterlassen Sie die Wohnung in ordentlichem Zustand.",
+          "Legen Sie die Schlüssel dort ab, wo es bei der Ankunft angegeben wurde, entweder an der Tür oder in der Keybox.",
+          "Prüfen Sie, dass Sie keine persönlichen Gegenstände vergessen haben.",
+          "Bitte melden Sie Schäden oder Probleme, die während Ihres Aufenthalts festgestellt wurden, umgehend."
+        ],
+        docsTitle: "📄 Nützliche Dokumente",
+        docsItTitle: "Italiano",
+        docsItArrival: "Anreiseinformationen",
+        docsItRules: "Hausregeln",
+        docsEnTitle: "English",
+        docsEnArrival: "Arrival info",
+        docsEnRules: "House rules",
+        docsDeTitle: "Deutsch",
+        docsDeArrival: "Anreiseinformationen",
+        docsDeRules: "Hausregeln",
+        docsFrTitle: "Français",
+        docsFrText: 'Bitte verwenden Sie die Dokumente auf <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">Englisch</a>.',
+        docsEsTitle: "Español",
+        docsEsText: 'Bitte verwenden Sie die Dokumente auf <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">Englisch</a>.',
+        docsExtraTitle: "Extra",
+        docsExtraPet: "🐾 Regeln für Haustiere",
+        docsExtraUmbrella: "⛱️ Sonnenschirm-Anleitung",
+        parkingTitle: "🚗 Parkplatz",
+        parkingText: "Kostenloser Parkplatz vor Ort.",
+        suggestionsTitle: "🍽️ Empfehlungen in der Umgebung",
+        restaurantsTitle: "🍴 Restaurants",
+        restaurantsList: [
+          "<strong>Vecchia Trattoria Romani</strong> — Fleisch, Pilze, Top-Adresse.",
+          "<strong>Osteria del Conte</strong> — lokale Gerichte im Ortszentrum.",
+          "<strong>La Tana di Charly</strong> — typische Bergatmosphäre.",
+          "<strong>Ristorante La Staffa</strong> — traditionelle regionale Küche."
+        ],
+        attractionsTitle: "🏞️ Sehenswürdigkeiten",
+        attractionsList: [
+          "<strong>Castello di Montecuccolo</strong> ✅",
+          "<strong>Ponte del Diavolo</strong>",
+          "<strong>Sestola</strong>",
+          "<strong>Monte Cimone</strong>",
+          "<strong>Sassoguidano</strong>",
+          "<strong>Maneggio La Staffa</strong> — Ausritte und Reitstunden für Erwachsene und Kinder."
+        ],
+        mapTitle: "🗺️ Karte",
+        mapText: "Google Maps kann bei der Verwendung nur der geschriebenen Adresse eine ungenaue Position anzeigen. Deshalb ist es besser, den Standort über die Koordinaten zu öffnen.",
+        coordsLabel: "Koordinaten:",
+        footerText: "Schönen Aufenthalt in Pavullo nel Frignano"
+      },
+      fr: {
+        subtitle1: "Guide des voyageurs",
+        subtitle2: "Toutes les informations utiles pour un séjour simple et sans souci.",
+        mapBtn: "📍 Google Maps",
+        rulesBtn: "📄 Règlement complet",
+        arrivalBtn: "🗝️ Instructions détaillées",
+        labelAddress: "📍 Adresse",
+        labelCheckin: "🕒 Check-in",
+        labelCheckout: "🚪 Check-out",
+        labelParking: "🚗 Parking",
+        parkingShort: "Parking gratuit sur place",
+        labelPassword: "🔐 Mot de passe",
+        accessTitle: "🗝️ Accès",
+        accessText: "L’hôte vous indiquera où trouver les clés : soit sur la porte, soit dans la keybox, comme indiqué dans les instructions envoyées avant l’arrivée.",
+        accessNote: "Veuillez toujours consulter les instructions jointes avant le check-in.",
+        rulesTitle: "🏡 Règles de la maison",
+        rulesList: [
+          "Il est interdit de fumer dans tous les espaces de l’appartement.",
+          "Les événements et les fêtes ne sont pas autorisés.",
+          "Merci de respecter les heures de silence de 22h00 à 08h00.",
+          "Veuillez faire attention à l’utilisation simultanée de plusieurs appareils électroménagers.",
+          "Merci de prendre soin du mobilier, de l’ameublement et de tous les éléments de l’appartement.",
+          "Merci de laisser l’appartement dans un état correct afin d’éviter des frais supplémentaires ou des signalements.",
+          "Si vous voyagez avec des animaux, veuillez lire attentivement les règles dédiées."
+        ],
+        wasteTitle: "♻️ Déchets",
+        wasteText: "Merci de respecter le tri des déchets et de laisser l’appartement propre et rangé.",
+        wasteNote: "En cas de doute, veuillez consulter les instructions disponibles dans l’appartement.",
+        checkoutTitle: "✅ Avant le check-out",
+        checkoutList: [
+          "Merci de laisser l’appartement dans un état correct.",
+          "Déposez les clés à l’endroit indiqué à l’arrivée, soit sur la porte, soit dans la keybox.",
+          "Vérifiez que vous n’avez oublié aucun effet personnel.",
+          "Merci de signaler rapidement tout dommage ou anomalie constaté pendant votre séjour."
+        ],
+        docsTitle: "📄 Documents utiles",
+        docsItTitle: "Italiano",
+        docsItArrival: "Informations d’arrivée",
+        docsItRules: "Règlement de la maison",
+        docsEnTitle: "English",
+        docsEnArrival: "Arrival info",
+        docsEnRules: "House rules",
+        docsDeTitle: "Deutsch",
+        docsDeArrival: "Anreiseinformationen",
+        docsDeRules: "Hausregeln",
+        docsFrTitle: "Français",
+        docsFrText: 'Veuillez utiliser les documents en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">anglais</a>.',
+        docsEsTitle: "Español",
+        docsEsText: 'Veuillez utiliser les documents en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">anglais</a>.',
+        docsExtraTitle: "Extra",
+        docsExtraPet: "🐾 Règles animaux",
+        docsExtraUmbrella: "⛱️ Instructions parasol",
+        parkingTitle: "🚗 Parking",
+        parkingText: "Parking gratuit sur place.",
+        suggestionsTitle: "🍽️ Suggestions dans les environs",
+        restaurantsTitle: "🍴 Restaurants",
+        restaurantsList: [
+          "<strong>Vecchia Trattoria Romani</strong> — viande, champignons, excellente adresse.",
+          "<strong>Osteria del Conte</strong> — plats locaux au centre-ville.",
+          "<strong>La Tana di Charly</strong> — ambiance typique de montagne.",
+          "<strong>Ristorante La Staffa</strong> — cuisine locale traditionnelle."
+        ],
+        attractionsTitle: "🏞️ Attractions",
+        attractionsList: [
+          "<strong>Castello di Montecuccolo</strong> ✅",
+          "<strong>Ponte del Diavolo</strong>",
+          "<strong>Sestola</strong>",
+          "<strong>Monte Cimone</strong>",
+          "<strong>Sassoguidano</strong>",
+          "<strong>Maneggio La Staffa</strong> — promenades et cours d’équitation pour adultes et enfants."
+        ],
+        mapTitle: "🗺️ Carte",
+        mapText: "Google Maps peut afficher une position imprécise si l’on utilise uniquement l’adresse écrite. Pour cette raison, il est préférable d’ouvrir la position avec les coordonnées.",
+        coordsLabel: "Coordonnées :",
+        footerText: "Bon séjour à Pavullo nel Frignano"
+      },
+      es: {
+        subtitle1: "Guía para huéspedes",
+        subtitle2: "Toda la información útil para una estancia sencilla y sin preocupaciones.",
+        mapBtn: "📍 Google Maps",
+        rulesBtn: "📄 Normas completas",
+        arrivalBtn: "🗝️ Instrucciones detalladas",
+        labelAddress: "📍 Dirección",
+        labelCheckin: "🕒 Check-in",
+        labelCheckout: "🚪 Check-out",
+        labelParking: "🚗 Aparcamiento",
+        parkingShort: "Gratis en la propiedad",
+        labelPassword: "🔐 Contraseña",
+        accessTitle: "🗝️ Acceso",
+        accessText: "El anfitrión indicará dónde encontrar las llaves: directamente en la puerta o en la keybox, tal como se especifica en las instrucciones enviadas antes de la llegada.",
+        accessNote: "Consulta siempre las instrucciones adjuntas antes del check-in.",
+        rulesTitle: "🏡 Normas de la casa",
+        rulesList: [
+          "Está prohibido fumar en todos los espacios del apartamento.",
+          "No se permiten eventos ni fiestas.",
+          "Respeta el horario de silencio de 22:00 a 08:00.",
+          "Presta atención al uso simultáneo de varios electrodomésticos.",
+          "Cuida los muebles, la decoración y todos los elementos del apartamento.",
+          "Deja el apartamento en condiciones decorosas para evitar cargos extra o avisos.",
+          "Si viajas con mascotas, lee atentamente las normas específicas."
+        ],
+        wasteTitle: "♻️ Residuos",
+        wasteText: "Te pedimos respetar la recogida selectiva y dejar el apartamento ordenado.",
+        wasteNote: "En caso de duda, consulta las instrucciones disponibles en el apartamento.",
+        checkoutTitle: "✅ Antes del check-out",
+        checkoutList: [
+          "Deja el apartamento en condiciones decorosas.",
+          "Deposita las llaves donde se indicó a la llegada, en la puerta o en la keybox.",
+          "Comprueba que no hayas olvidado objetos personales.",
+          "Comunica rápidamente cualquier daño o anomalía detectados durante la estancia."
+        ],
+        docsTitle: "📄 Documentos útiles",
+        docsItTitle: "Italiano",
+        docsItArrival: "Información de llegada",
+        docsItRules: "Normas de la casa",
+        docsEnTitle: "English",
+        docsEnArrival: "Arrival info",
+        docsEnRules: "House rules",
+        docsDeTitle: "Deutsch",
+        docsDeArrival: "Anreiseinformationen",
+        docsDeRules: "Hausregeln",
+        docsFrTitle: "Français",
+        docsFrText: 'Utiliza los documentos en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">inglés</a>.',
+        docsEsTitle: "Español",
+        docsEsText: 'Utiliza los documentos en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">inglés</a>.',
+        docsExtraTitle: "Extra",
+        docsExtraPet: "🐾 Normas para mascotas",
+        docsExtraUmbrella: "⛱️ Instrucciones sombrilla",
+        parkingTitle: "🚗 Aparcamiento",
+        parkingText: "Aparcamiento gratuito en la propiedad.",
+        suggestionsTitle: "🍽️ Sugerencias en la zona",
+        restaurantsTitle: "🍴 Restaurantes",
+        restaurantsList: [
+          "<strong>Vecchia Trattoria Romani</strong> — carne, setas, muy recomendable.",
+          "<strong>Osteria del Conte</strong> — platos locales en el centro.",
+          "<strong>La Tana di Charly</strong> — ambiente típico de montaña.",
+          "<strong>Ristorante La Staffa</strong> — cocina típica local."
+        ],
+        attractionsTitle: "🏞️ Atracciones",
+        attractionsList: [
+          "<strong>Castello di Montecuccolo</strong> ✅",
+          "<strong>Ponte del Diavolo</strong>",
+          "<strong>Sestola</strong>",
+          "<strong>Monte Cimone</strong>",
+          "<strong>Sassoguidano</strong>",
+          "<strong>Maneggio La Staffa</strong> — excursiones y clases de equitación para adultos y niños."
+        ],
+        mapTitle: "🗺️ Mapa",
+        mapText: "Google Maps puede mostrar una ubicación imprecisa usando solo la dirección escrita. Por eso es preferible abrir la ubicación mediante las coordenadas.",
+        coordsLabel: "Coordenadas:",
+        footerText: "Que disfrutes tu estancia en Pavullo nel Frignano"
+      }
+    };
+
+    function renderList(elementId, items) {
+      document.getElementById(elementId).innerHTML = items.map(item => `<li>${item}</li>`).join("");
+    }
+
+    function setLanguage(lang) {
+      const t = translations[lang] || translations.it;
+
+      document.documentElement.lang = lang;
+
+      document.getElementById("subtitle-1").textContent = t.subtitle1;
+      document.getElementById("subtitle-2").textContent = t.subtitle2;
+
+      document.getElementById("map-link").textContent = t.mapBtn;
+      document.getElementById("rules-link").textContent = t.rulesBtn;
+      document.getElementById("arrival-link").textContent = t.arrivalBtn;
+
+      document.getElementById("label-address").textContent = t.labelAddress;
+      document.getElementById("label-checkin").textContent = t.labelCheckin;
+      document.getElementById("label-checkout").textContent = t.labelCheckout;
+      document.getElementById("label-parking").textContent = t.labelParking;
+      document.getElementById("parking-short").textContent = t.parkingShort;
+      document.getElementById("label-password").textContent = t.labelPassword;
+
+      document.getElementById("access-title").textContent = t.accessTitle;
+      document.getElementById("access-text").textContent = t.accessText;
+      document.getElementById("access-note").textContent = t.accessNote;
+
+      document.getElementById("rules-title").textContent = t.rulesTitle;
+      renderList("rules-list", t.rulesList);
+
+      document.getElementById("waste-title").textContent = t.wasteTitle;
+      document.getElementById("waste-text").textContent = t.wasteText;
+      document.getElementById("waste-note").textContent = t.wasteNote;
+
+      document.getElementById("checkout-title").textContent = t.checkoutTitle;
+      renderList("checkout-list", t.checkoutList);
+
+      document.getElementById("docs-title").textContent = t.docsTitle;
+      document.getElementById("docs-it-title").textContent = t.docsItTitle;
+      document.getElementById("docs-it-arrival").textContent = t.docsItArrival;
+      document.getElementById("docs-it-rules").textContent = t.docsItRules;
+
+      document.getElementById("docs-en-title").textContent = t.docsEnTitle;
+      document.getElementById("docs-en-arrival").textContent = t.docsEnArrival;
+      document.getElementById("docs-en-rules").textContent = t.docsEnRules;
+
+      document.getElementById("docs-de-title").textContent = t.docsDeTitle;
+      document.getElementById("docs-de-arrival").textContent = t.docsDeArrival;
+      document.getElementById("docs-de-rules").textContent = t.docsDeRules;
+
+      document.getElementById("docs-fr-title").textContent = t.docsFrTitle;
+      document.getElementById("docs-fr-text").innerHTML = t.docsFrText;
+
+      document.getElementById("docs-es-title").textContent = t.docsEsTitle;
+      document.getElementById("docs-es-text").innerHTML = t.docsEsText;
+
+      document.getElementById("docs-extra-title").textContent = t.docsExtraTitle;
+      document.getElementById("docs-extra-pet").textContent = t.docsExtraPet;
+      document.getElementById("docs-extra-umbrella").textContent = t.docsExtraUmbrella;
+
+      document.getElementById("parking-title").textContent = t.parkingTitle;
+      document.getElementById("parking-text").textContent = t.parkingText;
+
+      document.getElementById("suggestions-title").textContent = t.suggestionsTitle;
+      document.getElementById("restaurants-title").textContent = t.restaurantsTitle;
+      renderList("restaurants-list", t.restaurantsList);
+
+      document.getElementById("attractions-title").textContent = t.attractionsTitle;
+      renderList("attractions-list", t.attractionsList);
+
+      document.getElementById("map-title").textContent = t.mapTitle;
+      document.getElementById("map-text").textContent = t.mapText;
+      document.getElementById("coords-label").textContent = t.coordsLabel;
+
+      document.getElementById("footer-text").textContent = t.footerText;
+
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+
+      localStorage.setItem("guestGuideLang", lang);
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+    });
+
+    const savedLang = localStorage.getItem("guestGuideLang") || "it";
+    setLanguage(savedLang);
+  </script>
 </body>
 </html>

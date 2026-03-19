@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riserva Del Frignano Appartaments - Guest Guide</title>
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --card: #ffffff;
+      --text: #2d2a26;
+      --muted: #6f685f;
+      --accent: #6f7d4e;
+      --accent-dark: #56613d;
+      --line: #e7dfd4;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-content {
+      padding: 24px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.1;
+      margin: 0 0 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .languages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .lang {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f2eee7;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .quick-links a {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .quick-links a.secondary {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .info-card {
+      background: #fcfbf8;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .value {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 18px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    a {
+      color: var(--accent-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 8px 0 30px;
+    }
+
+    @media (max-width: 700px) {
+      .hero img {
+        height: 220px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content,
+      .box {
+        padding: 18px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <section class="hero">
+      <img src="cover-molino-galeotto.jpg" alt="Riserva Del Frignano Appartaments">
+      <div class="hero-content">
+        <h1>Riserva Del Frignano Appartaments</h1>
+        <p class="subtitle">Guida Ospiti / Guest Guide</p>
+        <p class="subtitle">Tutte le informazioni utili per un soggiorno semplice e senza pensieri.</p>
+      </div>
+    </section>
+
+    <section class="box">
+      <div class="languages">
+        <a class="lang" href="arrival-info-it" target="_blank" rel="noopener noreferrer">Italiano</a>
+        <a class="lang" href="arrival-info-en" target="_blank" rel="noopener noreferrer">English</a>
+        <a class="lang" href="arrival-info-de" target="_blank" rel="noopener noreferrer">Deutsch</a>
+        <a class="lang" href="arrival-info-en" target="_blank" rel="noopener noreferrer">Français</a>
+        <a class="lang" href="arrival-info-en" target="_blank" rel="noopener noreferrer">Español</a>
+      </div>
+    </section>
+
+    <section class="box">
+      <div class="quick-links">
+        <a href="https://www.google.com/maps?q=44.35729,10.82317" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>
+      </div>
+      <div class="quick-links">
+        <a class="secondary" href="house-rules-it" target="_blank" rel="noopener noreferrer">📄 Regole complete</a>
+        <a class="secondary" href="arrival-info-it" target="_blank" rel="noopener noreferrer">🗝️ Istruzioni dettagliate</a>
+      </div>
+    </section>
+
+    <section class="box">
+      <div class="grid">
+        <div class="info-card">
+          <div class="label">📍 Indirizzo</div>
+          <div class="value">Via Molino Galeotto 21, Pavullo nel Frignano</div>
+        </div>
+        <div class="info-card">
+          <div class="label">🕒 Check-in</div>
+          <div class="value">15:00 - 00:00</div>
+        </div>
+        <div class="info-card">
+          <div class="label">🚪 Check-out</div>
+          <div class="value">10:00 / 10:30</div>
+        </div>
+        <div class="info-card">
+          <div class="label">🚗 Parcheggio</div>
+          <div class="value">Gratuito in struttura</div>
+        </div>
+        <div class="info-card">
+          <div class="label">📶 Wi-Fi</div>
+          <div class="value">Riserva del frignano</div>
+        </div>
+        <div class="info-card">
+          <div class="label">🔐 Password</div>
+          <div class="value">Riserva2025</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="box">
+      <h2>🗝️ Accesso</h2>
+      <p>
+        L’host indicherà dove trovare le chiavi: direttamente sulla porta oppure nella <strong>keybox</strong>, come specificato nelle istruzioni ricevute prima dell’arrivo.
+      </p>
+      <p class="muted">
+        Controlla sempre le istruzioni allegate prima del check-in.
+      </p>
+    </section>
+
+    <section class="box">
+      <h2>🏡 Regole casa</h2>
+      <ul>
+        <li>Vietato fumare in tutti gli ambienti.</li>
+        <li>Eventi e feste non sono consentiti.</li>
+        <li>Rispettare l’orario di silenzio dalle 22:00 alle 08:00.</li>
+        <li>Prestare attenzione all’utilizzo contemporaneo degli elettrodomestici.</li>
+        <li>Avere cura di mobili, arredi e complementi dell’appartamento.</li>
+        <li>Lasciare l’appartamento in condizioni decorose per evitare costi extra o segnalazioni.</li>
+        <li>Se accompagnati da animali domestici, leggere attentamente le regole dedicate.</li>
+      </ul>
+    </section>
+
+    <section class="box">
+      <h2>♻️ Rifiuti</h2>
+      <p>
+        Ti chiediamo di rispettare la raccolta differenziata e di lasciare l’appartamento in ordine.
+      </p>
+      <p class="muted">
+        In caso di dubbi, fai riferimento alle istruzioni presenti in appartamento.
+      </p>
+    </section>
+
+    <section class="box">
+      <h2>✅ Prima del check-out</h2>
+      <ul>
+        <li>Lascia l’appartamento in condizioni decorose.</li>
+        <li>Deposita le chiavi dove indicato all’arrivo, sulla porta oppure nella keybox.</li>
+        <li>Controlla di non aver dimenticato effetti personali.</li>
+        <li>Segnala tempestivamente eventuali danni o anomalie riscontrate durante il soggiorno.</li>
+      </ul>
+    </section>
+
+    <section class="box">
+      <h2>📄 Documenti utili</h2>
+
+      <h3>Italiano</h3>
+      <p>
+        <a href="arrival-info-it" target="_blank" rel="noopener noreferrer">Indicazioni arrivo</a> ·
+        <a href="house-rules-it" target="_blank" rel="noopener noreferrer">Regole della casa</a>
+      </p>
+
+      <h3>English</h3>
+      <p>
+        <a href="arrival-info-en" target="_blank" rel="noopener noreferrer">Arrival info</a> ·
+        <a href="house-rules-en" target="_blank" rel="noopener noreferrer">House rules</a>
+      </p>
+
+      <h3>Deutsch</h3>
+      <p>
+        <a href="arrival-info-de" target="_blank" rel="noopener noreferrer">Anreiseinformationen</a> ·
+        <a href="house-rules-de" target="_blank" rel="noopener noreferrer">Hausregeln</a>
+      </p>
+
+      <h3>Français</h3>
+      <p>
+        Utilizza i documenti in <a href="arrival-info-en" target="_blank" rel="noopener noreferrer">inglese</a>.
+      </p>
+
+      <h3>Español</h3>
+      <p>
+        Utiliza los documentos en <a href="arrival-info-en" target="_blank" rel="noopener noreferrer">inglés</a>.
+      </p>
+
+      <h3>Extra</h3>
+      <p>
+        <a href="pet-rules" target="_blank" rel="noopener noreferrer">🐾 Pet rules</a> ·
+        <a href="beach-umbrella" target="_blank" rel="noopener noreferrer">⛱️ Beach umbrella</a>
+      </p>
+    </section>
+
+    <section class="box">
+      <h2>🚗 Parcheggio</h2>
+      <p>Parcheggio gratuito in struttura.</p>
+    </section>
+
+    <section class="box">
+      <h2>🍽️ Suggerimenti in zona</h2>
+
+      <h3>🍴 Ristoranti</h3>
+      <ul>
+        <li><strong>Vecchia Trattoria Romani</strong> — carne, funghi, top.</li>
+        <li><strong>Osteria del Conte</strong> — piatti locali in centro.</li>
+        <li><strong>La Tana di Charly</strong> — atmosfera tipica di montagna.</li>
+        <li><strong>Ristorante La Staffa</strong> — cucina tipica.</li>
+      </ul>
+
+      <h3>🏞️ Attrazioni</h3>
+      <ul>
+        <li><strong>Castello di Montecuccolo</strong> ✅</li>
+        <li><strong>Ponte del Diavolo</strong></li>
+        <li><strong>Sestola</strong></li>
+        <li><strong>Monte Cimone</strong></li>
+        <li><strong>Sassoguidano</strong></li>
+        <li><strong>Maneggio La Staffa</strong> — escursioni e lezioni a cavallo per adulti e bambini.</li>
+      </ul>
+    </section>
+
+    <section class="box">
+      <h2>🗺️ Mappa</h2>
+      <p>
+        Google Maps può mostrare un posizionamento non preciso usando il solo indirizzo testuale. Per questo è preferibile aprire la posizione tramite coordinate.
+      </p>
+      <p><strong>Coordinate:</strong> 44.35729, 10.82317</p>
+    </section>
+
+    <div class="footer">
+      Buon soggiorno a Pavullo nel Frignano
+    </div>
+
+  </div>
+</body>
+</html>

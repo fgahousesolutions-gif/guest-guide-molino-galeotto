@@ -6,15 +6,17 @@
   <title>Riserva Del Frignano Appartaments - Guest Guide</title>
   <style>
     :root {
-      --bg: #f7f4ef;
-      --card: #ffffff;
-      --text: #2d2a26;
-      --muted: #6f685f;
-      --accent: #6f7d4e;
-      --accent-dark: #56613d;
-      --line: #e7dfd4;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-      --radius: 18px;
+      --bg: #eef0f4;
+      --card: #f7f7f8;
+      --text: #18213c;
+      --muted: #6b7890;
+      --border: #273454;
+      --primary: #0f1b3d;
+      --primary-hover: #162754;
+      --shadow: 0 8px 24px rgba(15, 27, 61, 0.08);
+      --radius-xl: 26px;
+      --radius-lg: 20px;
+      --radius-md: 18px;
     }
 
     * {
@@ -30,22 +32,21 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
     .wrap {
-      max-width: 920px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 18px;
+      padding: 22px;
     }
 
     .hero {
       background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: var(--radius-xl);
       overflow: hidden;
       box-shadow: var(--shadow);
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .hero img {
@@ -56,140 +57,148 @@
     }
 
     .hero-content {
-      padding: 24px;
+      padding: 28px;
     }
 
     h1 {
-      font-size: clamp(30px, 5vw, 44px);
-      line-height: 1.1;
-      margin: 0 0 8px;
+      margin: 0 0 10px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.08;
       letter-spacing: -0.03em;
     }
 
     .subtitle {
       margin: 0;
       color: var(--muted);
-      font-size: 17px;
+      font-size: 18px;
     }
 
-    .box {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 20px;
-      margin-bottom: 18px;
+    .space-top {
+      margin-top: 18px;
     }
 
-    .languages {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .lang-btn {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #f2eee7;
-      color: var(--text);
-      border: 1px solid transparent;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .lang-btn:hover {
-      border-color: var(--line);
-    }
-
-    .lang-btn.active {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .quick-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 6px;
-    }
-
-    .quick-links a {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .quick-links a.secondary {
-      background: #fff;
-      color: var(--text);
-      border: 1px solid var(--line);
-    }
-
-    .grid {
+    .button-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .info-card {
-      background: #fcfbf8;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
+    .lang-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 26px;
     }
 
-    .label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      margin-bottom: 5px;
-      font-weight: 700;
+    .lang-grid .full-row {
+      grid-column: 1 / -1;
     }
 
-    .value {
+    .lang-btn,
+    .action-btn,
+    .doc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 62px;
+      padding: 14px 18px;
+      border-radius: 22px;
       font-size: 16px;
       font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .lang-btn {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active {
+      background: #e9edf5;
+    }
+
+    .primary-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .action-btn {
+      background: var(--primary);
+      color: #fff;
+      border: 2px solid var(--border);
+    }
+
+    .action-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .docs-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 14px;
+    }
+
+    .doc-btn {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .doc-btn:hover {
+      background: #eef2f8;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 22px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 34px;
+    }
+
+    .info-stack {
+      display: grid;
+      gap: 24px;
+    }
+
+    .info-item .label {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .info-item .value {
+      font-size: 17px;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .info-item .note {
+      font-size: 14px;
+      color: var(--muted);
     }
 
     h2 {
       margin: 0 0 12px;
-      font-size: 24px;
+      font-size: 28px;
       letter-spacing: -0.02em;
-    }
-
-    h3 {
-      margin: 18px 0 8px;
-      font-size: 18px;
     }
 
     ul {
       margin: 0;
-      padding-left: 20px;
+      padding-left: 22px;
     }
 
     li + li {
       margin-top: 8px;
-    }
-
-    a {
-      color: var(--accent-dark);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    a:hover {
-      text-decoration: underline;
     }
 
     .muted {
@@ -200,25 +209,46 @@
       text-align: center;
       color: var(--muted);
       font-size: 14px;
-      padding: 8px 0 30px;
+      padding: 8px 0 24px;
+    }
+
+    @media (max-width: 900px) {
+      .docs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
     }
 
     @media (max-width: 700px) {
+      .wrap {
+        padding: 14px;
+      }
+
       .hero img {
         height: 220px;
       }
 
-      .grid {
+      .hero-content,
+      .card {
+        padding: 20px;
+      }
+
+      .lang-grid,
+      .primary-grid,
+      .docs-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-content,
-      .box {
-        padding: 18px;
+      .lang-grid .full-row {
+        grid-column: auto;
       }
 
       h2 {
-        font-size: 22px;
+        font-size: 24px;
       }
     }
   </style>
@@ -231,138 +261,109 @@
       <div class="hero-content">
         <h1>Riserva Del Frignano Appartaments</h1>
         <p class="subtitle" id="subtitle-1"></p>
-        <p class="subtitle" id="subtitle-2"></p>
-      </div>
-    </section>
+        <p class="subtitle space-top" id="subtitle-2"></p>
 
-    <section class="box">
-      <div class="languages">
-        <button class="lang-btn" data-lang="it">Italiano</button>
-        <button class="lang-btn" data-lang="en">English</button>
-        <button class="lang-btn" data-lang="de">Deutsch</button>
-        <button class="lang-btn" data-lang="fr">Français</button>
-        <button class="lang-btn" data-lang="es">Español</button>
-      </div>
-    </section>
+        <div class="button-grid lang-grid">
+          <button class="lang-btn" data-lang="it">Italiano</button>
+          <button class="lang-btn" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="de">Deutsch</button>
+          <button class="lang-btn" data-lang="fr">Français</button>
+          <button class="lang-btn full-row" data-lang="es">Español</button>
+        </div>
 
-    <section class="box">
-      <div class="quick-links">
-        <a id="map-link" href="https://www.google.com/maps?q=44.35729,10.82317" target="_blank" rel="noopener noreferrer"></a>
-      </div>
-      <div class="quick-links">
-        <a id="rules-link" class="secondary" href="house-rules-it.pdf" target="_blank" rel="noopener noreferrer"></a>
-        <a id="arrival-link" class="secondary" href="arrival-info-it.pdf" target="_blank" rel="noopener noreferrer"></a>
-      </div>
-    </section>
+        <div class="button-grid primary-grid">
+          <a class="action-btn" href="https://www.google.com/maps?q=44.35729,10.82317" target="_blank" rel="noopener noreferrer" id="map-btn"></a>
+          <a class="action-btn" href="https://wa.me/393290624796" target="_blank" rel="noopener noreferrer" id="whatsapp-btn"></a>
+        </div>
 
-    <section class="box">
-      <div class="grid">
-        <div class="info-card">
-          <div class="label" id="label-address"></div>
-          <div class="value">Via Molino Galeotto 21, Pavullo nel Frignano</div>
-        </div>
-        <div class="info-card">
-          <div class="label" id="label-checkin"></div>
-          <div class="value">15:00 - 00:00</div>
-        </div>
-        <div class="info-card">
-          <div class="label" id="label-checkout"></div>
-          <div class="value">10:00 - 10:30</div>
-        </div>
-        <div class="info-card">
-          <div class="label" id="label-parking"></div>
-          <div class="value" id="parking-short"></div>
-        </div>
-        <div class="info-card">
-          <div class="label">📶 Wi-Fi</div>
-          <div class="value">Riserva del frignano</div>
-        </div>
-        <div class="info-card">
-          <div class="label" id="label-password"></div>
-          <div class="value">Riserva2025</div>
+        <div class="button-grid docs-grid">
+          <a class="doc-btn" href="#" target="_blank" rel="noopener noreferrer" id="rules-btn"></a>
+          <a class="doc-btn" href="#" target="_blank" rel="noopener noreferrer" id="arrival-btn"></a>
+          <a class="doc-btn" href="pet-rules.pdf" target="_blank" rel="noopener noreferrer" id="pet-btn"></a>
+          <a class="doc-btn" href="beach-umbrella.pdf" target="_blank" rel="noopener noreferrer" id="umbrella-btn"></a>
         </div>
       </div>
     </section>
 
-    <section class="box">
+    <section class="card">
+      <div class="info-grid">
+        <div class="info-stack">
+          <div class="info-item">
+            <span class="label" id="label-address"></span>
+            <div class="value">Via Molino Galeotto 21, Pavullo nel Frignano</div>
+          </div>
+
+          <div class="info-item">
+            <span class="label" id="label-checkin"></span>
+            <div class="value">15:00 - 00:00</div>
+          </div>
+
+          <div class="info-item">
+            <span class="label" id="label-checkout"></span>
+            <div class="value">10:00 / 10:30</div>
+          </div>
+        </div>
+
+        <div class="info-stack">
+          <div class="info-item">
+            <span class="label">📶 Wi-Fi</span>
+            <div class="value">Riserva del frignano</div>
+            <div class="note">Password: Riserva2025</div>
+          </div>
+
+          <div class="info-item">
+            <span class="label" id="label-contact"></span>
+            <div class="value">WhatsApp: +39 329 0624796</div>
+            <div class="note" id="contact-note"></div>
+          </div>
+
+          <div class="info-item">
+            <span class="label" id="label-parking"></span>
+            <div class="value" id="parking-short"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
       <h2 id="access-title"></h2>
       <p id="access-text"></p>
       <p class="muted" id="access-note"></p>
     </section>
 
-    <section class="box">
+    <section class="card">
       <h2 id="rules-title"></h2>
       <ul id="rules-list"></ul>
     </section>
 
-    <section class="box">
+    <section class="card">
       <h2 id="waste-title"></h2>
       <p id="waste-text"></p>
       <p class="muted" id="waste-note"></p>
     </section>
 
-    <section class="box">
+    <section class="card">
       <h2 id="checkout-title"></h2>
       <ul id="checkout-list"></ul>
     </section>
 
-    <section class="box">
-      <h2 id="docs-title"></h2>
-
-      <h3 id="docs-it-title"></h3>
-      <p>
-        <a href="arrival-info-it.pdf" target="_blank" rel="noopener noreferrer" id="docs-it-arrival"></a> ·
-        <a href="house-rules-it.pdf" target="_blank" rel="noopener noreferrer" id="docs-it-rules"></a>
-      </p>
-
-      <h3 id="docs-en-title"></h3>
-      <p>
-        <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer" id="docs-en-arrival"></a> ·
-        <a href="house-rules-en.pdf" target="_blank" rel="noopener noreferrer" id="docs-en-rules"></a>
-      </p>
-
-      <h3 id="docs-de-title"></h3>
-      <p>
-        <a href="arrival-info-de.pdf" target="_blank" rel="noopener noreferrer" id="docs-de-arrival"></a> ·
-        <a href="house-rules-de.pdf" target="_blank" rel="noopener noreferrer" id="docs-de-rules"></a>
-      </p>
-
-      <h3 id="docs-fr-title"></h3>
-      <p id="docs-fr-text"></p>
-
-      <h3 id="docs-es-title"></h3>
-      <p id="docs-es-text"></p>
-
-      <h3 id="docs-extra-title"></h3>
-      <p>
-        <a href="pet-rules.pdf" target="_blank" rel="noopener noreferrer" id="docs-extra-pet"></a> ·
-        <a href="beach-umbrella.pdf" target="_blank" rel="noopener noreferrer" id="docs-extra-umbrella"></a>
-      </p>
-    </section>
-
-    <section class="box">
-      <h2 id="parking-title"></h2>
-      <p id="parking-text"></p>
-    </section>
-
-    <section class="box">
+    <section class="card">
       <h2 id="suggestions-title"></h2>
 
       <h3 id="restaurants-title"></h3>
       <ul id="restaurants-list"></ul>
 
-      <h3 id="attractions-title"></h3>
+      <h3 id="attractions-title" style="margin-top:20px;"></h3>
       <ul id="attractions-list"></ul>
     </section>
 
-    <section class="box">
+    <section class="card">
       <h2 id="map-title"></h2>
       <p id="map-text"></p>
       <p><strong id="coords-label"></strong> 44.35729, 10.82317</p>
     </section>
 
     <div class="footer" id="footer-text"></div>
-
   </div>
 
   <script>
@@ -371,14 +372,18 @@
         subtitle1: "Guida Ospiti / Guest Guide",
         subtitle2: "Tutte le informazioni utili per un soggiorno semplice e senza pensieri.",
         mapBtn: "📍 Google Maps",
+        whatsappBtn: "💬 WhatsApp",
         rulesBtn: "📄 Regole complete",
-        arrivalBtn: "🗝️ Istruzioni dettagliate",
+        arrivalBtn: "📘 Istruzioni dettagliate",
+        petBtn: "🐾 Regole animali",
+        umbrellaBtn: "⛱️ Ombrellone",
         labelAddress: "📍 Indirizzo",
         labelCheckin: "🕒 Check-in",
-        labelCheckout: "🚪 Check-out",
+        labelCheckout: "🕘 Check-out",
+        labelContact: "💬 Contatto",
+        contactNote: "Solo chat 07:00–22:00",
         labelParking: "🚗 Parcheggio",
         parkingShort: "Gratuito in struttura",
-        labelPassword: "🔐 Password",
         accessTitle: "🗝️ Accesso",
         accessText: "L’host indicherà dove trovare le chiavi: direttamente sulla porta oppure nella keybox, come specificato nelle istruzioni ricevute prima dell’arrivo.",
         accessNote: "Controlla sempre le istruzioni allegate prima del check-in.",
@@ -402,25 +407,6 @@
           "Controlla di non aver dimenticato effetti personali.",
           "Segnala tempestivamente eventuali danni o anomalie riscontrate durante il soggiorno."
         ],
-        docsTitle: "📄 Documenti utili",
-        docsItTitle: "Italiano",
-        docsItArrival: "Indicazioni arrivo",
-        docsItRules: "Regole della casa",
-        docsEnTitle: "English",
-        docsEnArrival: "Arrival info",
-        docsEnRules: "House rules",
-        docsDeTitle: "Deutsch",
-        docsDeArrival: "Anreiseinformationen",
-        docsDeRules: "Hausregeln",
-        docsFrTitle: "Français",
-        docsFrText: 'Utilisez les documents en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">anglais</a>.',
-        docsEsTitle: "Español",
-        docsEsText: 'Utiliza los documentos en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">inglés</a>.',
-        docsExtraTitle: "Extra",
-        docsExtraPet: "🐾 Regole animali",
-        docsExtraUmbrella: "⛱️ Istruzioni ombrellone",
-        parkingTitle: "🚗 Parcheggio",
-        parkingText: "Parcheggio gratuito in struttura.",
         suggestionsTitle: "🍽️ Suggerimenti in zona",
         restaurantsTitle: "🍴 Ristoranti",
         restaurantsList: [
@@ -447,14 +433,18 @@
         subtitle1: "Guest Guide",
         subtitle2: "All the useful information for a smooth and worry-free stay.",
         mapBtn: "📍 Google Maps",
+        whatsappBtn: "💬 WhatsApp",
         rulesBtn: "📄 Full house rules",
-        arrivalBtn: "🗝️ Detailed arrival info",
+        arrivalBtn: "📘 Detailed instructions",
+        petBtn: "🐾 Pet rules",
+        umbrellaBtn: "⛱️ Umbrella instructions",
         labelAddress: "📍 Address",
         labelCheckin: "🕒 Check-in",
-        labelCheckout: "🚪 Check-out",
+        labelCheckout: "🕘 Check-out",
+        labelContact: "💬 Contact",
+        contactNote: "Chat only 07:00–22:00",
         labelParking: "🚗 Parking",
         parkingShort: "Free on-site parking",
-        labelPassword: "🔐 Password",
         accessTitle: "🗝️ Access",
         accessText: "The host will tell you where to find the keys: either on the door or in the keybox, as explained in the instructions sent before arrival.",
         accessNote: "Please always check the attached instructions before check-in.",
@@ -478,25 +468,6 @@
           "Check that you have not forgotten any personal belongings.",
           "Please promptly report any damage or issues noticed during your stay."
         ],
-        docsTitle: "📄 Useful documents",
-        docsItTitle: "Italiano",
-        docsItArrival: "Arrival info",
-        docsItRules: "House rules",
-        docsEnTitle: "English",
-        docsEnArrival: "Arrival info",
-        docsEnRules: "House rules",
-        docsDeTitle: "Deutsch",
-        docsDeArrival: "Arrival info",
-        docsDeRules: "House rules",
-        docsFrTitle: "Français",
-        docsFrText: 'Please use the documents in <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">English</a>.',
-        docsEsTitle: "Español",
-        docsEsText: 'Please use the documents in <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">English</a>.',
-        docsExtraTitle: "Extra",
-        docsExtraPet: "🐾 Pet rules",
-        docsExtraUmbrella: "⛱️ Beach umbrella instructions",
-        parkingTitle: "🚗 Parking",
-        parkingText: "Free on-site parking.",
         suggestionsTitle: "🍽️ Local suggestions",
         restaurantsTitle: "🍴 Restaurants",
         restaurantsList: [
@@ -523,14 +494,18 @@
         subtitle1: "Gästeführer",
         subtitle2: "Alle nützlichen Informationen für einen einfachen und sorgenfreien Aufenthalt.",
         mapBtn: "📍 Google Maps",
+        whatsappBtn: "💬 WhatsApp",
         rulesBtn: "📄 Vollständige Hausregeln",
-        arrivalBtn: "🗝️ Detaillierte Anreiseinfos",
+        arrivalBtn: "📘 Detaillierte Anweisungen",
+        petBtn: "🐾 Regeln für Haustiere",
+        umbrellaBtn: "⛱️ Schirm-Anleitung",
         labelAddress: "📍 Adresse",
         labelCheckin: "🕒 Check-in",
-        labelCheckout: "🚪 Check-out",
+        labelCheckout: "🕘 Check-out",
+        labelContact: "💬 Kontakt",
+        contactNote: "Nur Chat 07:00–22:00",
         labelParking: "🚗 Parkplatz",
         parkingShort: "Kostenlos vor Ort",
-        labelPassword: "🔐 Passwort",
         accessTitle: "🗝️ Zugang",
         accessText: "Der Gastgeber teilt Ihnen mit, wo sich die Schlüssel befinden: entweder an der Tür oder in der Keybox, wie in den vor der Anreise gesendeten Anweisungen beschrieben.",
         accessNote: "Bitte prüfen Sie vor dem Check-in immer die beigefügten Anweisungen.",
@@ -554,25 +529,6 @@
           "Prüfen Sie, dass Sie keine persönlichen Gegenstände vergessen haben.",
           "Bitte melden Sie Schäden oder Probleme, die während Ihres Aufenthalts festgestellt wurden, umgehend."
         ],
-        docsTitle: "📄 Nützliche Dokumente",
-        docsItTitle: "Italiano",
-        docsItArrival: "Anreiseinformationen",
-        docsItRules: "Hausregeln",
-        docsEnTitle: "English",
-        docsEnArrival: "Arrival info",
-        docsEnRules: "House rules",
-        docsDeTitle: "Deutsch",
-        docsDeArrival: "Anreiseinformationen",
-        docsDeRules: "Hausregeln",
-        docsFrTitle: "Français",
-        docsFrText: 'Bitte verwenden Sie die Dokumente auf <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">Englisch</a>.',
-        docsEsTitle: "Español",
-        docsEsText: 'Bitte verwenden Sie die Dokumente auf <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">Englisch</a>.',
-        docsExtraTitle: "Extra",
-        docsExtraPet: "🐾 Regeln für Haustiere",
-        docsExtraUmbrella: "⛱️ Sonnenschirm-Anleitung",
-        parkingTitle: "🚗 Parkplatz",
-        parkingText: "Kostenloser Parkplatz vor Ort.",
         suggestionsTitle: "🍽️ Empfehlungen in der Umgebung",
         restaurantsTitle: "🍴 Restaurants",
         restaurantsList: [
@@ -599,14 +555,18 @@
         subtitle1: "Guide des voyageurs",
         subtitle2: "Toutes les informations utiles pour un séjour simple et sans souci.",
         mapBtn: "📍 Google Maps",
+        whatsappBtn: "💬 WhatsApp",
         rulesBtn: "📄 Règlement complet",
-        arrivalBtn: "🗝️ Instructions détaillées",
+        arrivalBtn: "📘 Instructions détaillées",
+        petBtn: "🐾 Règles animaux",
+        umbrellaBtn: "⛱️ Instructions parasol",
         labelAddress: "📍 Adresse",
         labelCheckin: "🕒 Check-in",
-        labelCheckout: "🚪 Check-out",
+        labelCheckout: "🕘 Check-out",
+        labelContact: "💬 Contact",
+        contactNote: "Chat uniquement 07:00–22:00",
         labelParking: "🚗 Parking",
         parkingShort: "Parking gratuit sur place",
-        labelPassword: "🔐 Mot de passe",
         accessTitle: "🗝️ Accès",
         accessText: "L’hôte vous indiquera où trouver les clés : soit sur la porte, soit dans la keybox, comme indiqué dans les instructions envoyées avant l’arrivée.",
         accessNote: "Veuillez toujours consulter les instructions jointes avant le check-in.",
@@ -630,25 +590,6 @@
           "Vérifiez que vous n’avez oublié aucun effet personnel.",
           "Merci de signaler rapidement tout dommage ou anomalie constaté pendant votre séjour."
         ],
-        docsTitle: "📄 Documents utiles",
-        docsItTitle: "Italiano",
-        docsItArrival: "Informations d’arrivée",
-        docsItRules: "Règlement de la maison",
-        docsEnTitle: "English",
-        docsEnArrival: "Arrival info",
-        docsEnRules: "House rules",
-        docsDeTitle: "Deutsch",
-        docsDeArrival: "Anreiseinformationen",
-        docsDeRules: "Hausregeln",
-        docsFrTitle: "Français",
-        docsFrText: 'Veuillez utiliser les documents en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">anglais</a>.',
-        docsEsTitle: "Español",
-        docsEsText: 'Veuillez utiliser les documents en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">anglais</a>.',
-        docsExtraTitle: "Extra",
-        docsExtraPet: "🐾 Règles animaux",
-        docsExtraUmbrella: "⛱️ Instructions parasol",
-        parkingTitle: "🚗 Parking",
-        parkingText: "Parking gratuit sur place.",
         suggestionsTitle: "🍽️ Suggestions dans les environs",
         restaurantsTitle: "🍴 Restaurants",
         restaurantsList: [
@@ -675,14 +616,18 @@
         subtitle1: "Guía para huéspedes",
         subtitle2: "Toda la información útil para una estancia sencilla y sin preocupaciones.",
         mapBtn: "📍 Google Maps",
+        whatsappBtn: "💬 WhatsApp",
         rulesBtn: "📄 Normas completas",
-        arrivalBtn: "🗝️ Instrucciones detalladas",
+        arrivalBtn: "📘 Instrucciones detalladas",
+        petBtn: "🐾 Normas mascotas",
+        umbrellaBtn: "⛱️ Instrucciones sombrilla",
         labelAddress: "📍 Dirección",
         labelCheckin: "🕒 Check-in",
-        labelCheckout: "🚪 Check-out",
+        labelCheckout: "🕘 Check-out",
+        labelContact: "💬 Contacto",
+        contactNote: "Solo chat 07:00–22:00",
         labelParking: "🚗 Aparcamiento",
         parkingShort: "Gratis en la propiedad",
-        labelPassword: "🔐 Contraseña",
         accessTitle: "🗝️ Acceso",
         accessText: "El anfitrión indicará dónde encontrar las llaves: directamente en la puerta o en la keybox, tal como se especifica en las instrucciones enviadas antes de la llegada.",
         accessNote: "Consulta siempre las instrucciones adjuntas antes del check-in.",
@@ -693,7 +638,7 @@
           "Respeta el horario de silencio de 22:00 a 08:00.",
           "Presta atención al uso simultáneo de varios electrodomésticos.",
           "Cuida los muebles, la decoración y todos los elementos del apartamento.",
-          "Deja el apartamento en condiciones decorosas para evitar cargos extra o avisos.",
+          "Deja el apartamento en condiciones correctas para evitar cargos extra o avisos.",
           "Si viajas con mascotas, lee atentamente las normas específicas."
         ],
         wasteTitle: "♻️ Residuos",
@@ -701,30 +646,11 @@
         wasteNote: "En caso de duda, consulta las instrucciones disponibles en el apartamento.",
         checkoutTitle: "✅ Antes del check-out",
         checkoutList: [
-          "Deja el apartamento en condiciones decorosas.",
+          "Deja el apartamento en condiciones correctas.",
           "Deposita las llaves donde se indicó a la llegada, en la puerta o en la keybox.",
           "Comprueba que no hayas olvidado objetos personales.",
           "Comunica rápidamente cualquier daño o anomalía detectados durante la estancia."
         ],
-        docsTitle: "📄 Documentos útiles",
-        docsItTitle: "Italiano",
-        docsItArrival: "Información de llegada",
-        docsItRules: "Normas de la casa",
-        docsEnTitle: "English",
-        docsEnArrival: "Arrival info",
-        docsEnRules: "House rules",
-        docsDeTitle: "Deutsch",
-        docsDeArrival: "Anreiseinformationen",
-        docsDeRules: "Hausregeln",
-        docsFrTitle: "Français",
-        docsFrText: 'Utiliza los documentos en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">inglés</a>.',
-        docsEsTitle: "Español",
-        docsEsText: 'Utiliza los documentos en <a href="arrival-info-en.pdf" target="_blank" rel="noopener noreferrer">inglés</a>.',
-        docsExtraTitle: "Extra",
-        docsExtraPet: "🐾 Normas para mascotas",
-        docsExtraUmbrella: "⛱️ Instrucciones sombrilla",
-        parkingTitle: "🚗 Aparcamiento",
-        parkingText: "Aparcamiento gratuito en la propiedad.",
         suggestionsTitle: "🍽️ Sugerencias en la zona",
         restaurantsTitle: "🍴 Restaurantes",
         restaurantsList: [
@@ -749,28 +675,42 @@
       }
     };
 
-    function renderList(elementId, items) {
-      document.getElementById(elementId).innerHTML = items.map(item => `<li>${item}</li>`).join("");
+    function renderList(id, items) {
+      document.getElementById(id).innerHTML = items.map(item => `<li>${item}</li>`).join("");
+    }
+
+    function getDocLang(lang) {
+      if (lang === "it" || lang === "en" || lang === "de") return lang;
+      return "en";
     }
 
     function setLanguage(lang) {
       const t = translations[lang] || translations.it;
+      const docLang = getDocLang(lang);
 
       document.documentElement.lang = lang;
 
       document.getElementById("subtitle-1").textContent = t.subtitle1;
       document.getElementById("subtitle-2").textContent = t.subtitle2;
 
-      document.getElementById("map-link").textContent = t.mapBtn;
-      document.getElementById("rules-link").textContent = t.rulesBtn;
-      document.getElementById("arrival-link").textContent = t.arrivalBtn;
+      document.getElementById("map-btn").textContent = t.mapBtn;
+      document.getElementById("whatsapp-btn").textContent = t.whatsappBtn;
+
+      document.getElementById("rules-btn").textContent = t.rulesBtn;
+      document.getElementById("arrival-btn").textContent = t.arrivalBtn;
+      document.getElementById("pet-btn").textContent = t.petBtn;
+      document.getElementById("umbrella-btn").textContent = t.umbrellaBtn;
+
+      document.getElementById("rules-btn").href = `house-rules-${docLang}.pdf`;
+      document.getElementById("arrival-btn").href = `arrival-info-${docLang}.pdf`;
 
       document.getElementById("label-address").textContent = t.labelAddress;
       document.getElementById("label-checkin").textContent = t.labelCheckin;
       document.getElementById("label-checkout").textContent = t.labelCheckout;
+      document.getElementById("label-contact").textContent = t.labelContact;
+      document.getElementById("contact-note").textContent = t.contactNote;
       document.getElementById("label-parking").textContent = t.labelParking;
       document.getElementById("parking-short").textContent = t.parkingShort;
-      document.getElementById("label-password").textContent = t.labelPassword;
 
       document.getElementById("access-title").textContent = t.accessTitle;
       document.getElementById("access-text").textContent = t.accessText;
@@ -785,32 +725,6 @@
 
       document.getElementById("checkout-title").textContent = t.checkoutTitle;
       renderList("checkout-list", t.checkoutList);
-
-      document.getElementById("docs-title").textContent = t.docsTitle;
-      document.getElementById("docs-it-title").textContent = t.docsItTitle;
-      document.getElementById("docs-it-arrival").textContent = t.docsItArrival;
-      document.getElementById("docs-it-rules").textContent = t.docsItRules;
-
-      document.getElementById("docs-en-title").textContent = t.docsEnTitle;
-      document.getElementById("docs-en-arrival").textContent = t.docsEnArrival;
-      document.getElementById("docs-en-rules").textContent = t.docsEnRules;
-
-      document.getElementById("docs-de-title").textContent = t.docsDeTitle;
-      document.getElementById("docs-de-arrival").textContent = t.docsDeArrival;
-      document.getElementById("docs-de-rules").textContent = t.docsDeRules;
-
-      document.getElementById("docs-fr-title").textContent = t.docsFrTitle;
-      document.getElementById("docs-fr-text").innerHTML = t.docsFrText;
-
-      document.getElementById("docs-es-title").textContent = t.docsEsTitle;
-      document.getElementById("docs-es-text").innerHTML = t.docsEsText;
-
-      document.getElementById("docs-extra-title").textContent = t.docsExtraTitle;
-      document.getElementById("docs-extra-pet").textContent = t.docsExtraPet;
-      document.getElementById("docs-extra-umbrella").textContent = t.docsExtraUmbrella;
-
-      document.getElementById("parking-title").textContent = t.parkingTitle;
-      document.getElementById("parking-text").textContent = t.parkingText;
 
       document.getElementById("suggestions-title").textContent = t.suggestionsTitle;
       document.getElementById("restaurants-title").textContent = t.restaurantsTitle;
@@ -836,8 +750,7 @@
       btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
     });
 
-    const savedLang = localStorage.getItem("guestGuideLang") || "it";
-    setLanguage(savedLang);
+    setLanguage(localStorage.getItem("guestGuideLang") || "it");
   </script>
 </body>
 </html>

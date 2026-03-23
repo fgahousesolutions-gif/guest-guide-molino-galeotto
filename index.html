@@ -186,6 +186,12 @@
       color: var(--muted);
     }
 
+    .wifi-network + .wifi-network {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(39, 52, 84, 0.12);
+    }
+
     h2 {
       margin: 0 0 12px;
       font-size: 28px;
@@ -306,9 +312,8 @@
 
         <div class="info-stack">
           <div class="info-item">
-            <span class="label">📶 Wi-Fi</span>
-            <div class="value">Riserva del frignano</div>
-            <div class="note">Password: Riserva2025</div>
+            <span class="label" id="label-wifi"></span>
+            <div id="wifi-content"></div>
           </div>
 
           <div class="info-item">
@@ -367,6 +372,17 @@
   </div>
 
   <script>
+    const wifiNetworks = [
+      {
+        name: "VF_IT_FWA_99B6-plus",
+        password: "6dB25QdEqND5h55T"
+      },
+      {
+        name: "Riserva del frignano",
+        password: "Riserva2025"
+      }
+    ];
+
     const translations = {
       it: {
         subtitle1: "Guida Ospiti / Guest Guide",
@@ -380,10 +396,12 @@
         labelAddress: "📍 Indirizzo",
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
+        labelWifi: "📶 Wi-Fi",
         labelContact: "💬 Contatto",
         contactNote: "Solo chat 07:00–22:00",
         labelParking: "🚗 Parcheggio",
         parkingShort: "Gratuito in struttura",
+        wifiPasswordLabel: "Password",
         accessTitle: "🗝️ Accesso",
         accessText: "L’host indicherà dove trovare le chiavi: direttamente sulla porta oppure nella keybox, come specificato nelle istruzioni ricevute prima dell’arrivo.",
         accessNote: "Controlla sempre le istruzioni allegate prima del check-in.",
@@ -411,7 +429,7 @@
         restaurantsTitle: "🍴 Ristoranti",
         restaurantsList: [
           "<strong>Vecchia Trattoria Romani</strong> — carne, funghi, top.",
-          "<strong>Osteria del Conte</strong> — piatti locali in centro.",
+          "<strong>La Mirella</strong> — cucina tipica del territorio.",
           "<strong>La Tana di Charly</strong> — atmosfera tipica di montagna.",
           "<strong>Ristorante La Staffa</strong> — cucina tipica."
         ],
@@ -441,10 +459,12 @@
         labelAddress: "📍 Address",
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
+        labelWifi: "📶 Wi-Fi",
         labelContact: "💬 Contact",
         contactNote: "Chat only 07:00–22:00",
         labelParking: "🚗 Parking",
         parkingShort: "Free on-site parking",
+        wifiPasswordLabel: "Password",
         accessTitle: "🗝️ Access",
         accessText: "The host will tell you where to find the keys: either on the door or in the keybox, as explained in the instructions sent before arrival.",
         accessNote: "Please always check the attached instructions before check-in.",
@@ -472,7 +492,7 @@
         restaurantsTitle: "🍴 Restaurants",
         restaurantsList: [
           "<strong>Vecchia Trattoria Romani</strong> — meat, mushrooms, top choice.",
-          "<strong>Osteria del Conte</strong> — local dishes in the town centre.",
+          "<strong>La Mirella</strong> — traditional local cuisine.",
           "<strong>La Tana di Charly</strong> — typical mountain atmosphere.",
           "<strong>Ristorante La Staffa</strong> — traditional local cuisine."
         ],
@@ -502,10 +522,12 @@
         labelAddress: "📍 Adresse",
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
+        labelWifi: "📶 Wi-Fi",
         labelContact: "💬 Kontakt",
         contactNote: "Nur Chat 07:00–22:00",
         labelParking: "🚗 Parkplatz",
         parkingShort: "Kostenlos vor Ort",
+        wifiPasswordLabel: "Passwort",
         accessTitle: "🗝️ Zugang",
         accessText: "Der Gastgeber teilt Ihnen mit, wo sich die Schlüssel befinden: entweder an der Tür oder in der Keybox, wie in den vor der Anreise gesendeten Anweisungen beschrieben.",
         accessNote: "Bitte prüfen Sie vor dem Check-in immer die beigefügten Anweisungen.",
@@ -533,7 +555,7 @@
         restaurantsTitle: "🍴 Restaurants",
         restaurantsList: [
           "<strong>Vecchia Trattoria Romani</strong> — Fleisch, Pilze, Top-Adresse.",
-          "<strong>Osteria del Conte</strong> — lokale Gerichte im Ortszentrum.",
+          "<strong>La Mirella</strong> — traditionelle regionale Küche.",
           "<strong>La Tana di Charly</strong> — typische Bergatmosphäre.",
           "<strong>Ristorante La Staffa</strong> — traditionelle regionale Küche."
         ],
@@ -563,10 +585,12 @@
         labelAddress: "📍 Adresse",
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
+        labelWifi: "📶 Wi-Fi",
         labelContact: "💬 Contact",
         contactNote: "Chat uniquement 07:00–22:00",
         labelParking: "🚗 Parking",
         parkingShort: "Parking gratuit sur place",
+        wifiPasswordLabel: "Mot de passe",
         accessTitle: "🗝️ Accès",
         accessText: "L’hôte vous indiquera où trouver les clés : soit sur la porte, soit dans la keybox, comme indiqué dans les instructions envoyées avant l’arrivée.",
         accessNote: "Veuillez toujours consulter les instructions jointes avant le check-in.",
@@ -594,7 +618,7 @@
         restaurantsTitle: "🍴 Restaurants",
         restaurantsList: [
           "<strong>Vecchia Trattoria Romani</strong> — viande, champignons, excellente adresse.",
-          "<strong>Osteria del Conte</strong> — plats locaux au centre-ville.",
+          "<strong>La Mirella</strong> — cuisine locale traditionnelle.",
           "<strong>La Tana di Charly</strong> — ambiance typique de montagne.",
           "<strong>Ristorante La Staffa</strong> — cuisine locale traditionnelle."
         ],
@@ -624,10 +648,12 @@
         labelAddress: "📍 Dirección",
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
+        labelWifi: "📶 Wi-Fi",
         labelContact: "💬 Contacto",
         contactNote: "Solo chat 07:00–22:00",
         labelParking: "🚗 Aparcamiento",
         parkingShort: "Gratis en la propiedad",
+        wifiPasswordLabel: "Contraseña",
         accessTitle: "🗝️ Acceso",
         accessText: "El anfitrión indicará dónde encontrar las llaves: directamente en la puerta o en la keybox, tal como se especifica en las instrucciones enviadas antes de la llegada.",
         accessNote: "Consulta siempre las instrucciones adjuntas antes del check-in.",
@@ -655,7 +681,7 @@
         restaurantsTitle: "🍴 Restaurantes",
         restaurantsList: [
           "<strong>Vecchia Trattoria Romani</strong> — carne, setas, muy recomendable.",
-          "<strong>Osteria del Conte</strong> — platos locales en el centro.",
+          "<strong>La Mirella</strong> — cocina típica local.",
           "<strong>La Tana di Charly</strong> — ambiente típico de montaña.",
           "<strong>Ristorante La Staffa</strong> — cocina típica local."
         ],
@@ -677,6 +703,17 @@
 
     function renderList(id, items) {
       document.getElementById(id).innerHTML = items.map(item => `<li>${item}</li>`).join("");
+    }
+
+    function renderWifi(lang) {
+      const t = translations[lang] || translations.it;
+      const wifiContent = document.getElementById("wifi-content");
+      wifiContent.innerHTML = wifiNetworks.map(network => `
+        <div class="wifi-network">
+          <div class="value">${network.name}</div>
+          <div class="note">${t.wifiPasswordLabel}: ${network.password}</div>
+        </div>
+      `).join("");
     }
 
     function getDocLang(lang) {
@@ -707,10 +744,13 @@
       document.getElementById("label-address").textContent = t.labelAddress;
       document.getElementById("label-checkin").textContent = t.labelCheckin;
       document.getElementById("label-checkout").textContent = t.labelCheckout;
+      document.getElementById("label-wifi").textContent = t.labelWifi;
       document.getElementById("label-contact").textContent = t.labelContact;
       document.getElementById("contact-note").textContent = t.contactNote;
       document.getElementById("label-parking").textContent = t.labelParking;
       document.getElementById("parking-short").textContent = t.parkingShort;
+
+      renderWifi(lang);
 
       document.getElementById("access-title").textContent = t.accessTitle;
       document.getElementById("access-text").textContent = t.accessText;

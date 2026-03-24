@@ -83,12 +83,8 @@
     }
 
     .lang-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       margin-top: 26px;
-    }
-
-    .lang-grid .full-row {
-      grid-column: 1 / -1;
     }
 
     .lang-btn,
@@ -99,13 +95,15 @@
       justify-content: center;
       text-align: center;
       min-height: 62px;
-      padding: 14px 18px;
+      padding: 14px 16px;
       border-radius: 22px;
       font-size: 16px;
       font-weight: 600;
       text-decoration: none;
       transition: 0.2s ease;
       cursor: pointer;
+      width: 100%;
+      white-space: nowrap;
     }
 
     .lang-btn {
@@ -187,9 +185,16 @@
     }
 
     .wifi-network + .wifi-network {
-      margin-top: 10px;
-      padding-top: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
       border-top: 1px solid rgba(39, 52, 84, 0.12);
+    }
+
+    .wifi-network-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 4px;
     }
 
     h2 {
@@ -216,6 +221,12 @@
       color: var(--muted);
       font-size: 14px;
       padding: 8px 0 24px;
+    }
+
+    @media (max-width: 1000px) {
+      .lang-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 900px) {
@@ -249,8 +260,10 @@
         grid-template-columns: 1fr;
       }
 
-      .lang-grid .full-row {
-        grid-column: auto;
+      .lang-btn,
+      .action-btn,
+      .doc-btn {
+        white-space: normal;
       }
 
       h2 {
@@ -274,7 +287,7 @@
           <button class="lang-btn" data-lang="en">English</button>
           <button class="lang-btn" data-lang="de">Deutsch</button>
           <button class="lang-btn" data-lang="fr">Français</button>
-          <button class="lang-btn full-row" data-lang="es">Español</button>
+          <button class="lang-btn" data-lang="es">Español</button>
         </div>
 
         <div class="button-grid primary-grid">
@@ -374,12 +387,14 @@
   <script>
     const wifiNetworks = [
       {
-        name: "VF_IT_FWA_99B6-plus",
-        password: "6dB25QdEqND5h55T"
-      },
-      {
+        typeKey: "wifiPrimary",
         name: "Riserva del frignano",
         password: "Riserva2025"
+      },
+      {
+        typeKey: "wifiAlternative",
+        name: "VF_IT_FWA_99B6-plus",
+        password: "6dB25QdEqND5h55T"
       }
     ];
 
@@ -397,6 +412,8 @@
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
         labelWifi: "📶 Wi-Fi",
+        wifiPrimary: "Wi-Fi principale",
+        wifiAlternative: "Wi-Fi alternativo",
         labelContact: "💬 Contatto",
         contactNote: "Solo chat 07:00–22:00",
         labelParking: "🚗 Parcheggio",
@@ -460,6 +477,8 @@
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
         labelWifi: "📶 Wi-Fi",
+        wifiPrimary: "Main Wi-Fi",
+        wifiAlternative: "Alternative Wi-Fi",
         labelContact: "💬 Contact",
         contactNote: "Chat only 07:00–22:00",
         labelParking: "🚗 Parking",
@@ -523,6 +542,8 @@
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
         labelWifi: "📶 Wi-Fi",
+        wifiPrimary: "Haupt-Wi-Fi",
+        wifiAlternative: "Alternatives Wi-Fi",
         labelContact: "💬 Kontakt",
         contactNote: "Nur Chat 07:00–22:00",
         labelParking: "🚗 Parkplatz",
@@ -586,6 +607,8 @@
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
         labelWifi: "📶 Wi-Fi",
+        wifiPrimary: "Wi-Fi principal",
+        wifiAlternative: "Wi-Fi alternatif",
         labelContact: "💬 Contact",
         contactNote: "Chat uniquement 07:00–22:00",
         labelParking: "🚗 Parking",
@@ -649,6 +672,8 @@
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
         labelWifi: "📶 Wi-Fi",
+        wifiPrimary: "Wi-Fi principal",
+        wifiAlternative: "Wi-Fi alternativo",
         labelContact: "💬 Contacto",
         contactNote: "Solo chat 07:00–22:00",
         labelParking: "🚗 Aparcamiento",
@@ -708,8 +733,10 @@
     function renderWifi(lang) {
       const t = translations[lang] || translations.it;
       const wifiContent = document.getElementById("wifi-content");
+
       wifiContent.innerHTML = wifiNetworks.map(network => `
         <div class="wifi-network">
+          <div class="wifi-network-title">${t[network.typeKey]}</div>
           <div class="value">${network.name}</div>
           <div class="note">${t.wifiPasswordLabel}: ${network.password}</div>
         </div>

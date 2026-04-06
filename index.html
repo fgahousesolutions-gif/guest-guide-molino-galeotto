@@ -223,6 +223,41 @@
       padding: 8px 0 24px;
     }
 
+    .ecosystem-card {
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .ecosystem-kicker {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid #fed7aa;
+      background: #fff7ed;
+      color: #9a3412;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .ecosystem-title {
+      margin-bottom: 12px;
+    }
+
+    .ecosystem-text {
+      max-width: 640px;
+      margin: 0 auto 18px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .ecosystem-actions {
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
     @media (max-width: 1000px) {
       .lang-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -381,7 +416,14 @@
       <p><strong id="coords-label"></strong> 44.35729, 10.82317</p>
     </section>
 
-    <div class="footer" id="footer-text"></div>
+    <section class="card ecosystem-card">
+      <div class="ecosystem-kicker" id="ecosystem-kicker"></div>
+      <h2 class="ecosystem-title" id="ecosystem-title"></h2>
+      <p class="ecosystem-text" id="ecosystem-text"></p>
+      <div class="button-grid ecosystem-actions">
+        <a class="action-btn" href="https://ecosistema-fga.fgahousesolutions.workers.dev/#structures" target="_blank" rel="noopener noreferrer" id="ecosystem-btn"></a>
+      </div>
+    </section>
   </div>
 
   <script>
@@ -462,7 +504,10 @@
         mapTitle: "🗺️ Mappa",
         mapText: "Google Maps può mostrare un posizionamento non preciso usando il solo indirizzo testuale. Per questo è preferibile aprire la posizione tramite coordinate.",
         coordsLabel: "Coordinate:",
-        footerText: "Buon soggiorno a Pavullo nel Frignano"
+        ecosystemKicker: "FGA House Solutions",
+        ecosystemTitle: "Scopri l’Ecosistema FGA",
+        ecosystemText: "Esperienze diverse, un unico stile di accoglienza. Se stai già pensando al tuo prossimo viaggio, puoi esplorare le altre strutture FGA attualmente disponibili.",
+        ecosystemBtn: "Scopri il tuo prossimo soggiorno"
       },
       en: {
         subtitle1: "Guest Guide",
@@ -527,7 +572,10 @@
         mapTitle: "🗺️ Map",
         mapText: "Google Maps may show an imprecise location when using only the written address. For this reason, it is better to open the location using coordinates.",
         coordsLabel: "Coordinates:",
-        footerText: "Enjoy your stay in Pavullo nel Frignano"
+        ecosystemKicker: "FGA House Solutions",
+        ecosystemTitle: "Discover the FGA Ecosystem",
+        ecosystemText: "Different stays, one shared style of hospitality. If you are already thinking about your next trip, you can explore the other FGA properties currently available.",
+        ecosystemBtn: "Discover your next stay"
       },
       de: {
         subtitle1: "Gästeführer",
@@ -592,7 +640,10 @@
         mapTitle: "🗺️ Karte",
         mapText: "Google Maps kann bei der Verwendung nur der geschriebenen Adresse eine ungenaue Position anzeigen. Deshalb ist es besser, den Standort über die Koordinaten zu öffnen.",
         coordsLabel: "Koordinaten:",
-        footerText: "Schönen Aufenthalt in Pavullo nel Frignano"
+        ecosystemKicker: "FGA House Solutions",
+        ecosystemTitle: "Entdecke das FGA-Ökosystem",
+        ecosystemText: "Unterschiedliche Aufenthalte, ein gemeinsamer Stil der Gastfreundschaft. Wenn du schon an deine nächste Reise denkst, kannst du die weiteren derzeit verfügbaren FGA-Unterkünfte entdecken.",
+        ecosystemBtn: "Entdecke deinen nächsten Aufenthalt"
       },
       fr: {
         subtitle1: "Guide des voyageurs",
@@ -657,7 +708,10 @@
         mapTitle: "🗺️ Carte",
         mapText: "Google Maps peut afficher une position imprécise si l’on utilise uniquement l’adresse écrite. Pour cette raison, il est préférable d’ouvrir la position avec les coordonnées.",
         coordsLabel: "Coordonnées :",
-        footerText: "Bon séjour à Pavullo nel Frignano"
+        ecosystemKicker: "FGA House Solutions",
+        ecosystemTitle: "Découvrir l’Écosystème FGA",
+        ecosystemText: "Des séjours différents, un même style d’accueil. Si vous pensez déjà à votre prochain voyage, vous pouvez explorer les autres hébergements FGA actuellement disponibles.",
+        ecosystemBtn: "Découvrir votre prochain séjour"
       },
       es: {
         subtitle1: "Guía para huéspedes",
@@ -722,7 +776,10 @@
         mapTitle: "🗺️ Mapa",
         mapText: "Google Maps puede mostrar una ubicación imprecisa usando solo la dirección escrita. Por eso es preferible abrir la ubicación mediante las coordenadas.",
         coordsLabel: "Coordenadas:",
-        footerText: "Que disfrutes tu estancia en Pavullo nel Frignano"
+        ecosystemKicker: "FGA House Solutions",
+        ecosystemTitle: "Descubre el Ecosistema FGA",
+        ecosystemText: "Experiencias diferentes, un mismo estilo de hospitalidad. Si ya estás pensando en tu próximo viaje, puedes explorar las otras propiedades FGA actualmente disponibles.",
+        ecosystemBtn: "Descubre tu próxima estancia"
       }
     };
 
@@ -804,7 +861,10 @@
       document.getElementById("map-text").textContent = t.mapText;
       document.getElementById("coords-label").textContent = t.coordsLabel;
 
-      document.getElementById("footer-text").textContent = t.footerText;
+      document.getElementById("ecosystem-kicker").textContent = t.ecosystemKicker;
+      document.getElementById("ecosystem-title").textContent = t.ecosystemTitle;
+      document.getElementById("ecosystem-text").textContent = t.ecosystemText;
+      document.getElementById("ecosystem-btn").textContent = t.ecosystemBtn;
 
       document.querySelectorAll(".lang-btn").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.lang === lang);

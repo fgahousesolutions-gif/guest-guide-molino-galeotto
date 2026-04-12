@@ -258,6 +258,26 @@
       margin: 0 auto;
     }
 
+    .section-intro {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 16px;
+    }
+
+    .events-actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+
+    .events-card h3 {
+      margin: 20px 0 10px;
+      font-size: 18px;
+    }
+
+    .link-list a {
+      color: var(--text);
+    }
+
     @media (max-width: 1000px) {
       .lang-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -272,6 +292,10 @@
       .info-grid {
         grid-template-columns: 1fr;
         gap: 24px;
+      }
+
+      .events-actions {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -416,6 +440,17 @@
       <p><strong id="coords-label"></strong> 44.35729, 10.82317</p>
     </section>
 
+    <section class="card events-card">
+      <h2 id="events-title"></h2>
+      <p class="section-intro" id="events-text"></p>
+      <div class="button-grid events-actions">
+        <a class="action-btn" href="https://www.comune.pavullo-nel-frignano.mo.it/turismo-a-pavullo/eventi/" target="_blank" rel="noopener noreferrer" id="events-comune-btn"></a>
+        <a class="action-btn" href="https://www.visitmodena.it/it/eventi" target="_blank" rel="noopener noreferrer" id="events-visitmodena-btn"></a>
+      </div>
+      <h3 id="events-extra-title"></h3>
+      <ul class="link-list" id="events-extra-list"></ul>
+    </section>
+
     <section class="card ecosystem-card">
       <div class="ecosystem-kicker" id="ecosystem-kicker"></div>
       <h2 class="ecosystem-title" id="ecosystem-title"></h2>
@@ -466,7 +501,7 @@
         accessNote: "Controlla sempre le istruzioni allegate prima del check-in.",
         rulesTitle: "🏡 Regole casa",
         rulesList: [
-          "Vietato fumare in tutti gli ambienti.",
+          "<strong>Vietato fumare in tutti gli ambienti.</strong>",
           "Eventi e feste non sono consentiti.",
           "Rispettare l’orario di silenzio dalle 22:00 alle 08:00.",
           "Prestare attenzione all’utilizzo contemporaneo degli elettrodomestici.",
@@ -475,7 +510,7 @@
           "Se accompagnati da animali domestici, leggere attentamente le regole dedicate."
         ],
         wasteTitle: "♻️ Rifiuti",
-        wasteText: "Ti chiediamo di rispettare la raccolta differenziata e di lasciare l’appartamento in ordine.",
+        wasteText: "<strong>A fine soggiorno dovrai portare i rifiuti nei cassonetti all’inizio della strada, al bivio con la statale principale.</strong>",
         wasteNote: "In caso di dubbi, fai riferimento alle istruzioni presenti in appartamento.",
         checkoutTitle: "✅ Prima del check-out",
         checkoutList: [
@@ -504,6 +539,16 @@
         mapTitle: "🗺️ Mappa",
         mapText: "Google Maps può mostrare un posizionamento non preciso usando il solo indirizzo testuale. Per questo è preferibile aprire la posizione tramite coordinate.",
         coordsLabel: "Coordinate:",
+        eventsTitle: "🎉 Eventi a Pavullo e in Appennino",
+        eventsText: "Vuoi scoprire cosa succede durante il tuo soggiorno? Qui trovi i riferimenti ufficiali per consultare eventi, manifestazioni, mercati e iniziative nel territorio di Pavullo e dell’Appennino modenese.",
+        eventsComuneBtn: "Scopri gli eventi in programma",
+        eventsVisitModenaBtn: "Eventi su VisitModena",
+        eventsExtraTitle: "Link extra utili",
+        eventsExtraList: [
+          '<a href="https://www.visitmodena.it/it/scopri-modena/scopri-il-territorio/appennino-modenese/pavullo" target="_blank" rel="noopener noreferrer">Pavullo su VisitModena</a>',
+          '<a href="https://www.visitmodena.it/it/scopri-modena/scopri-il-territorio/appennino-modenese" target="_blank" rel="noopener noreferrer">Appennino Modenese su VisitModena</a>',
+          '<a href="https://www.comune.pavullo-nel-frignano.mo.it/turismo-a-pavullo/scopri-pavullo-e-il-suo-territorio/sagre-fiere-e-mercati/" target="_blank" rel="noopener noreferrer">Sagre, fiere e mercati a Pavullo</a>'
+        ],
         ecosystemKicker: "FGA House Solutions",
         ecosystemTitle: "Scopri l’Ecosistema FGA",
         ecosystemText: "Esperienze diverse, un unico stile di accoglienza. Se stai già pensando al tuo prossimo viaggio, puoi esplorare le altre strutture FGA attualmente disponibili.",
@@ -534,7 +579,7 @@
         accessNote: "Please always check the attached instructions before check-in.",
         rulesTitle: "🏡 House rules",
         rulesList: [
-          "Smoking is not allowed in any area of the apartment.",
+          "<strong>Smoking is not allowed in any area of the apartment.</strong>",
           "Events and parties are not allowed.",
           "Please respect quiet hours from 10:00 PM to 8:00 AM.",
           "Please pay attention when using multiple appliances at the same time.",
@@ -543,7 +588,7 @@
           "If you are travelling with pets, please read the dedicated pet rules carefully."
         ],
         wasteTitle: "♻️ Waste",
-        wasteText: "Please respect waste sorting rules and leave the apartment tidy.",
+        wasteText: "<strong>At the end of your stay, please take the waste to the bins at the beginning of the road, at the junction with the main state road.</strong>",
         wasteNote: "If you are unsure, please refer to the instructions available in the apartment.",
         checkoutTitle: "✅ Before check-out",
         checkoutList: [
@@ -572,6 +617,16 @@
         mapTitle: "🗺️ Map",
         mapText: "Google Maps may show an imprecise location when using only the written address. For this reason, it is better to open the location using coordinates.",
         coordsLabel: "Coordinates:",
+        eventsTitle: "🎉 Events in Pavullo and the Apennines",
+        eventsText: "Would you like to discover what is happening during your stay? Here you can find the official references to check events, local fairs, markets and activities in Pavullo and the Modenese Apennines.",
+        eventsComuneBtn: "See upcoming events",
+        eventsVisitModenaBtn: "Events on VisitModena",
+        eventsExtraTitle: "Useful extra links",
+        eventsExtraList: [
+          '<a href="https://www.visitmodena.it/it/scopri-modena/scopri-il-territorio/appennino-modenese/pavullo" target="_blank" rel="noopener noreferrer">Pavullo on VisitModena</a>',
+          '<a href="https://www.visitmodena.it/it/scopri-modena/scopri-il-territorio/appennino-modenese" target="_blank" rel="noopener noreferrer">Modenese Apennines on VisitModena</a>',
+          '<a href="https://www.comune.pavullo-nel-frignano.mo.it/turismo-a-pavullo/scopri-pavullo-e-il-suo-territorio/sagre-fiere-e-mercati/" target="_blank" rel="noopener noreferrer">Fairs, festivals and markets in Pavullo</a>'
+        ],
         ecosystemKicker: "FGA House Solutions",
         ecosystemTitle: "Discover the FGA Ecosystem",
         ecosystemText: "Different stays, one shared style of hospitality. If you are already thinking about your next trip, you can explore the other FGA properties currently available.",
@@ -602,7 +657,7 @@
         accessNote: "Bitte prüfen Sie vor dem Check-in immer die beigefügten Anweisungen.",
         rulesTitle: "🏡 Hausregeln",
         rulesList: [
-          "Rauchen ist in allen Bereichen der Wohnung verboten.",
+          "<strong>Rauchen ist in allen Bereichen der Wohnung verboten.</strong>",
           "Veranstaltungen und Partys sind nicht erlaubt.",
           "Bitte respektieren Sie die Ruhezeiten von 22:00 bis 08:00 Uhr.",
           "Bitte achten Sie auf die gleichzeitige Nutzung mehrerer Elektrogeräte.",
@@ -611,7 +666,7 @@
           "Wenn Sie mit Haustieren reisen, lesen Sie bitte die entsprechenden Regeln aufmerksam."
         ],
         wasteTitle: "♻️ Müll",
-        wasteText: "Bitte beachten Sie die Mülltrennung und hinterlassen Sie die Wohnung ordentlich.",
+        wasteText: "<strong>Am Ende Ihres Aufenthalts bringen Sie den Müll bitte zu den Containern am Anfang der Straße, an der Kreuzung mit der Hauptstraße.</strong>",
         wasteNote: "Bei Fragen beachten Sie bitte die Anweisungen in der Wohnung.",
         checkoutTitle: "✅ Vor dem Check-out",
         checkoutList: [
@@ -640,6 +695,16 @@
         mapTitle: "🗺️ Karte",
         mapText: "Google Maps kann bei der Verwendung nur der geschriebenen Adresse eine ungenaue Position anzeigen. Deshalb ist es besser, den Standort über die Koordinaten zu öffnen.",
         coordsLabel: "Koordinaten:",
+        eventsTitle: "🎉 Veranstaltungen in Pavullo und im Apennin",
+        eventsText: "Möchten Sie wissen, was während Ihres Aufenthalts passiert? Hier finden Sie die offiziellen Hinweise zu Veranstaltungen, Festen, Märkten und Aktivitäten in Pavullo und im modenischen Apennin.",
+        eventsComuneBtn: "Aktuelle Veranstaltungen ansehen",
+        eventsVisitModenaBtn: "Events auf VisitModena",
+        eventsExtraTitle: "Weitere nützliche Links",
+        eventsExtraList: [
+          '<a href="https://www.visitmodena.it/it/scopri-modena/scopri-il-territorio/appennino-modenese/pavullo" target="_blank" rel="noopener noreferrer">Pavullo auf VisitModena</a>',
+          '<a href="https://www.visitmodena.it/it/scopri-modena/scopri-il-territorio/appennino-modenese" target="_blank" rel="noopener noreferrer">Modeneser Apennin auf VisitModena</a>',
+          '<a href="https://www.comune.pavullo-nel-frignano.mo.it/turismo-a-pavullo/scopri-pavullo-e-il-suo-territorio/sagre-fiere-e-mercati/" target="_blank" rel="noopener noreferrer">Feste, Messen und Märkte in Pavullo</a>'
+        ],
         ecosystemKicker: "FGA House Solutions",
         ecosystemTitle: "Entdecke das FGA-Ökosystem",
         ecosystemText: "Unterschiedliche Aufenthalte, ein gemeinsamer Stil der Gastfreundschaft. Wenn du schon an deine nächste Reise denkst, kannst du die weiteren derzeit verfügbaren FGA-Unterkünfte entdecken.",
@@ -670,7 +735,7 @@
         accessNote: "Veuillez toujours consulter les instructions jointes avant le check-in.",
         rulesTitle: "🏡 Règles de la maison",
         rulesList: [
-          "Il est interdit de fumer dans tous les espaces de l’appartement.",
+          "<strong>Il est interdit de fumer dans tous les espaces de l’appartement.</strong>",
           "Les événements et les fêtes ne sont pas autorisés.",
           "Merci de respecter les heures de silence de 22h00 à 08h00.",
           "Veuillez faire attention à l’utilisation simultanée de plusieurs appareils électroménagers.",
@@ -679,7 +744,7 @@
           "Si vous voyagez avec des animaux, veuillez lire attentivement les règles dédiées."
         ],
         wasteTitle: "♻️ Déchets",
-        wasteText: "Merci de respecter le tri des déchets et de laisser l’appartement propre et rangé.",
+        wasteText: "<strong>À la fin du séjour, merci d’apporter les déchets aux conteneurs au début de la route, au carrefour avec la route principale.</strong>",
         wasteNote: "En cas de doute, veuillez consulter les instructions disponibles dans l’appartement.",
         checkoutTitle: "✅ Avant le check-out",
         checkoutList: [
@@ -708,6 +773,16 @@
         mapTitle: "🗺️ Carte",
         mapText: "Google Maps peut afficher une position imprécise si l’on utilise uniquement l’adresse écrite. Pour cette raison, il est préférable d’ouvrir la position avec les coordonnées.",
         coordsLabel: "Coordonnées :",
+        eventsTitle: "🎉 Événements à Pavullo et dans les Apennins",
+        eventsText: "Vous souhaitez découvrir ce qui se passe pendant votre séjour ? Vous trouverez ici les références officielles pour consulter les événements, manifestations, marchés et initiatives à Pavullo et dans l’Apennin modénais.",
+        eventsComuneBtn: "Voir les événements à venir",
+        eventsVisitModenaBtn: "Événements sur VisitModena",
+        eventsExtraTitle: "Liens utiles supplémentaires",
+        eventsExtraList: [
+          '<a href="https://www.visitmodena.it/it/scopri-modena/scopri-il-territorio/appennino-modenese/pavullo" target="_blank" rel="noopener noreferrer">Pavullo sur VisitModena</a>',
+          '<a href="https://www.visitmodena.it/it/scopri-modena/scopri-il-territorio/appennino-modenese" target="_blank" rel="noopener noreferrer">Apennin modénais sur VisitModena</a>',
+          '<a href="https://www.comune.pavullo-nel-frignano.mo.it/turismo-a-pavullo/scopri-pavullo-e-il-suo-territorio/sagre-fiere-e-mercati/" target="_blank" rel="noopener noreferrer">Fêtes, foires et marchés à Pavullo</a>'
+        ],
         ecosystemKicker: "FGA House Solutions",
         ecosystemTitle: "Découvrir l’Écosystème FGA",
         ecosystemText: "Des séjours différents, un même style d’accueil. Si vous pensez déjà à votre prochain voyage, vous pouvez explorer les autres hébergements FGA actuellement disponibles.",
@@ -738,7 +813,7 @@
         accessNote: "Consulta siempre las instrucciones adjuntas antes del check-in.",
         rulesTitle: "🏡 Normas de la casa",
         rulesList: [
-          "Está prohibido fumar en todos los espacios del apartamento.",
+          "<strong>Está prohibido fumar en todos los espacios del apartamento.</strong>",
           "No se permiten eventos ni fiestas.",
           "Respeta el horario de silencio de 22:00 a 08:00.",
           "Presta atención al uso simultáneo de varios electrodomésticos.",
@@ -747,7 +822,7 @@
           "Si viajas con mascotas, lee atentamente las normas específicas."
         ],
         wasteTitle: "♻️ Residuos",
-        wasteText: "Te pedimos respetar la recogida selectiva y dejar el apartamento ordenado.",
+        wasteText: "<strong>Al final de la estancia, deberás llevar los residuos a los contenedores al inicio de la carretera, en el cruce con la vía principal.</strong>",
         wasteNote: "En caso de duda, consulta las instrucciones disponibles en el apartamento.",
         checkoutTitle: "✅ Antes del check-out",
         checkoutList: [
@@ -776,6 +851,16 @@
         mapTitle: "🗺️ Mapa",
         mapText: "Google Maps puede mostrar una ubicación imprecisa usando solo la dirección escrita. Por eso es preferible abrir la ubicación mediante las coordenadas.",
         coordsLabel: "Coordenadas:",
+        eventsTitle: "🎉 Eventos en Pavullo y en los Apeninos",
+        eventsText: "Quieres descubrir qué ocurre durante tu estancia? Aquí encontrarás las referencias oficiales para consultar eventos, ferias, mercados e iniciativas en Pavullo y en los Apeninos modenenses.",
+        eventsComuneBtn: "Descubre los próximos eventos",
+        eventsVisitModenaBtn: "Eventos en VisitModena",
+        eventsExtraTitle: "Enlaces extra útiles",
+        eventsExtraList: [
+          '<a href="https://www.visitmodena.it/it/scopri-modena/scopri-il-territorio/appennino-modenese/pavullo" target="_blank" rel="noopener noreferrer">Pavullo en VisitModena</a>',
+          '<a href="https://www.visitmodena.it/it/scopri-modena/scopri-il-territorio/appennino-modenese" target="_blank" rel="noopener noreferrer">Apenino modenés en VisitModena</a>',
+          '<a href="https://www.comune.pavullo-nel-frignano.mo.it/turismo-a-pavullo/scopri-pavullo-e-il-suo-territorio/sagre-fiere-e-mercati/" target="_blank" rel="noopener noreferrer">Ferias, fiestas y mercados en Pavullo</a>'
+        ],
         ecosystemKicker: "FGA House Solutions",
         ecosystemTitle: "Descubre el Ecosistema FGA",
         ecosystemText: "Experiencias diferentes, un mismo estilo de hospitalidad. Si ya estás pensando en tu próximo viaje, puedes explorar las otras propiedades FGA actualmente disponibles.",
@@ -844,7 +929,7 @@
       renderList("rules-list", t.rulesList);
 
       document.getElementById("waste-title").textContent = t.wasteTitle;
-      document.getElementById("waste-text").textContent = t.wasteText;
+      document.getElementById("waste-text").innerHTML = t.wasteText;
       document.getElementById("waste-note").textContent = t.wasteNote;
 
       document.getElementById("checkout-title").textContent = t.checkoutTitle;
@@ -860,6 +945,13 @@
       document.getElementById("map-title").textContent = t.mapTitle;
       document.getElementById("map-text").textContent = t.mapText;
       document.getElementById("coords-label").textContent = t.coordsLabel;
+
+      document.getElementById("events-title").textContent = t.eventsTitle;
+      document.getElementById("events-text").textContent = t.eventsText;
+      document.getElementById("events-comune-btn").textContent = t.eventsComuneBtn;
+      document.getElementById("events-visitmodena-btn").textContent = t.eventsVisitModenaBtn;
+      document.getElementById("events-extra-title").textContent = t.eventsExtraTitle;
+      renderList("events-extra-list", t.eventsExtraList);
 
       document.getElementById("ecosystem-kicker").textContent = t.ecosystemKicker;
       document.getElementById("ecosystem-title").textContent = t.ecosystemTitle;

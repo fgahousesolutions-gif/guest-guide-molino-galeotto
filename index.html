@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Riserva Del Frignano Appartaments - Guest Guide</title>
+  <title>Indicazioni per Raggiungere APPARTAMENTS RISERVA DEL FRIGNANO</title>
   <style>
     :root {
       --bg: #eef0f4;
@@ -278,6 +278,83 @@
       color: var(--text);
     }
 
+    #arrival-page {
+      display: none;
+    }
+
+    body.arrival-view #main-page {
+      display: none;
+    }
+
+    body.arrival-view #arrival-page {
+      display: block;
+    }
+
+    .arrival-actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .arrival-steps {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .arrival-cover {
+      display: grid;
+      gap: 18px;
+      padding: clamp(24px, 5vw, 44px);
+      border-radius: var(--radius-lg);
+      background: #f6f7f8;
+      box-shadow: 0 8px 24px rgba(15, 27, 61, 0.12);
+      color: #4c5888;
+    }
+
+    .arrival-cover-title {
+      margin: 0;
+      text-align: center;
+      font-size: clamp(28px, 5.8vw, 50px);
+      line-height: 1.18;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .arrival-cover-address {
+      margin: 0;
+      text-align: center;
+      font-size: clamp(22px, 4vw, 34px);
+      line-height: 1.18;
+      font-style: italic;
+    }
+
+    .arrival-cover-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding-left: 24px;
+      font-size: clamp(18px, 3vw, 24px);
+      line-height: 1.28;
+    }
+
+    .arrival-page-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 8px 24px rgba(15, 27, 61, 0.12);
+      background: #fff;
+    }
+
+    .arrival-image-set {
+      display: none;
+      gap: 16px;
+    }
+
+    .arrival-image-set.active {
+      display: grid;
+    }
+
     @media (max-width: 1000px) {
       .lang-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -294,7 +371,8 @@
         gap: 24px;
       }
 
-      .events-actions {
+      .events-actions,
+      .arrival-actions {
         grid-template-columns: 1fr;
       }
     }
@@ -333,11 +411,12 @@
 </head>
 <body>
   <div class="wrap">
+    <div id="main-page">
 
     <section class="hero">
       <img src="cover-molino-galeotto.jpg" alt="Riserva Del Frignano Appartaments">
       <div class="hero-content">
-        <h1>Riserva Del Frignano Appartaments</h1>
+        <h1>Indicazioni per Raggiungere APPARTAMENTS RISERVA DEL FRIGNANO</h1>
         <p class="subtitle" id="subtitle-1"></p>
         <p class="subtitle space-top" id="subtitle-2"></p>
 
@@ -356,7 +435,7 @@
 
         <div class="button-grid docs-grid">
           <a class="doc-btn" href="#" target="_blank" rel="noopener noreferrer" id="rules-btn"></a>
-          <a class="doc-btn" href="#" target="_blank" rel="noopener noreferrer" id="arrival-btn"></a>
+          <a class="doc-btn" href="#arrival" id="arrival-btn"></a>
           <a class="doc-btn" href="pet-rules.pdf" target="_blank" rel="noopener noreferrer" id="pet-btn"></a>
           <a class="doc-btn" href="video-umbrella.mp4" target="_blank" rel="noopener noreferrer" id="umbrella-btn"></a>
         </div>
@@ -457,6 +536,65 @@
       <p class="ecosystem-text" id="ecosystem-text"></p>
       <div class="button-grid ecosystem-actions">
         <a class="action-btn" href="https://ecosistema-fga.fgahousesolutions.workers.dev/#structures" target="_blank" rel="noopener noreferrer" id="ecosystem-btn"></a>
+      </div>
+    </section>
+    </div>
+
+    <section class="card" id="arrival-page">
+      <h2 id="arrival-page-title"></h2>
+      <p class="section-intro" id="arrival-page-intro"></p>
+      <div class="button-grid arrival-actions">
+        <a class="action-btn" href="https://www.google.com/maps?q=44.35729,10.82317" target="_blank" rel="noopener noreferrer" id="arrival-map-btn"></a>
+        <button class="doc-btn" type="button" id="arrival-back-btn"></button>
+      </div>
+      <div class="arrival-steps" id="arrival-steps">
+        <div class="arrival-image-set active" data-doc-lang="it">
+          <article class="arrival-cover">
+            <h3 class="arrival-cover-title">indicazioni per Raggiungere APPARTAMENTS RISERVA DEL FRIGNANO</h3>
+            <p class="arrival-cover-address">Via Molino Galeotto 21 - Pavullo Nel Frignano</p>
+            <ul class="arrival-cover-list">
+              <li>L’indirizzo è Via Molino Galeotto 21, Pavullo nel Frignano. Se usi Mappe di iPhone, l’indirizzo ti porta davanti al cancello. Se usi Google Maps, inserisci Via Molino Galeotto 2, Pavullo nel Frignano, poi segui i passaggi successivi.</li>
+            </ul>
+          </article>
+          <img class="arrival-page-image" src="arrival-pages/it-02.jpg" alt="Indicazioni pagina 2" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/it-03.jpg" alt="Indicazioni pagina 3" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/it-04.jpg" alt="Indicazioni pagina 4" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/it-05.jpg" alt="Indicazioni pagina 5" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/it-06.jpg" alt="Indicazioni pagina 6" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/it-07.jpg" alt="Indicazioni pagina 7" loading="lazy">
+        </div>
+
+        <div class="arrival-image-set" data-doc-lang="en">
+          <article class="arrival-cover">
+            <h3 class="arrival-cover-title">indicazioni per Raggiungere APPARTAMENTS RISERVA DEL FRIGNANO</h3>
+            <p class="arrival-cover-address">Via Molino Galeotto 21 - Pavullo nel Frignano</p>
+            <ul class="arrival-cover-list">
+              <li>The address is Via Molino Galeotto 21, Pavullo nel Frignano. If you use Apple Maps, the address takes you right in front of the gate. If you use Google Maps, enter Via Molino Galeotto 2, Pavullo nel Frignano, then follow the next steps.</li>
+            </ul>
+          </article>
+          <img class="arrival-page-image" src="arrival-pages/en-02.jpg" alt="Directions page 2" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/en-03.jpg" alt="Directions page 3" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/en-04.jpg" alt="Directions page 4" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/en-05.jpg" alt="Directions page 5" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/en-06.jpg" alt="Directions page 6" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/en-07.jpg" alt="Directions page 7" loading="lazy">
+        </div>
+
+        <div class="arrival-image-set" data-doc-lang="de">
+          <article class="arrival-cover">
+            <h3 class="arrival-cover-title">indicazioni per Raggiungere APPARTAMENTS RISERVA DEL FRIGNANO</h3>
+            <p class="arrival-cover-address">Via Molino Galeotto 21 - Pavullo Nel Frignano</p>
+            <ul class="arrival-cover-list">
+              <li>Die Adresse lautet Via Molino Galeotto 21, Pavullo nel Frignano. Wenn Sie Apple Maps verwenden, führt Sie die Adresse direkt vor das Tor. Wenn Sie Google Maps verwenden, geben Sie Via Molino Galeotto 2, Pavullo nel Frignano ein und folgen Sie dann den nächsten Schritten.</li>
+            </ul>
+          </article>
+          <img class="arrival-page-image" src="arrival-pages/de-02.jpg" alt="Anfahrt Seite 2" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/de-03.jpg" alt="Anfahrt Seite 3" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/de-04.jpg" alt="Anfahrt Seite 4" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/de-05.jpg" alt="Anfahrt Seite 5" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/de-06.jpg" alt="Anfahrt Seite 6" loading="lazy">
+          <img class="arrival-page-image" src="arrival-pages/de-07.jpg" alt="Anfahrt Seite 7" loading="lazy">
+        </div>
       </div>
     </section>
   </div>
@@ -868,8 +1006,154 @@
       }
     };
 
+    const arrivalTranslations = {
+      it: {
+        title: "Indicazioni passo passo",
+        intro: "Usa questa pagina quando il navigatore non trova correttamente la destinazione. Con Apple Maps puoi inserire l’indirizzo indicato; con Google Maps è meglio seguire le indicazioni qui sotto.",
+        mapBtn: "📍 Apri posizione esatta",
+        backBtn: "← Torna alla guida",
+        steps: [
+          {
+            title: "1. Indirizzo e navigatore",
+            text: "L’indirizzo è Via Molino Galeotto 21, Pavullo nel Frignano. Se usi Mappe di iPhone, l’indirizzo ti porta davanti al cancello. Se usi Google Maps, inserisci Via Molino Galeotto 2, Pavullo nel Frignano, poi segui i passaggi successivi."
+          },
+          {
+            title: "2. Da Modena sulla SS12",
+            text: "Arrivando da Modena lungo la SS12, Via Giardini, il navigatore ti farà svoltare a destra vicino a una casa rossa subito dopo una piccola galleria."
+          },
+          {
+            title: "3. Prosegui sulla strada",
+            text: "Imbocca la strada e continua passando diversi caseggiati sia sulla destra sia sulla sinistra. Devi arrivare alla freccia gialla. A un certo punto la strada può sembrare sterrata, ma è asfaltata: continua sulla strada principale."
+          },
+          {
+            title: "4. Arrivo e keybox",
+            text: "L’ultimo tratto di strada non è perfetto perché il rifacimento del manto stradale è ancora in attesa. Parcheggia dove ti sembra più comodo. Dove vedi la freccia rossa trovi la keybox con le chiavi; il codice viene inviato via messaggio. La freccia gialla indica l’ingresso dell’appartamento."
+          }
+        ]
+      },
+      en: {
+        title: "Step-by-step directions",
+        intro: "Use this page when the navigator does not find the destination correctly. Apple Maps can use the listed address; with Google Maps it is better to follow the steps below.",
+        mapBtn: "📍 Open exact location",
+        backBtn: "← Back to guide",
+        steps: [
+          {
+            title: "1. Address and navigator",
+            text: "The address is Via Molino Galeotto 21, Pavullo nel Frignano. If you use Apple Maps, the address takes you right in front of the gate. If you use Google Maps, enter Via Molino Galeotto 2, Pavullo nel Frignano, then follow the next steps."
+          },
+          {
+            title: "2. From Modena on SS12",
+            text: "Coming from Modena on SS12, Via Giardini, the navigator will tell you to turn right near a red house just after a small tunnel."
+          },
+          {
+            title: "3. Continue on the road",
+            text: "Take that road and continue past several buildings on both the right and left. You need to reach the yellow arrow. At one point the road may look unpaved, but it is asphalted: keep following the main road."
+          },
+          {
+            title: "4. Arrival and keybox",
+            text: "The final stretch of road is not perfect because resurfacing is still pending. Park wherever you find most convenient. Where you see the red arrow, you will find the keybox with the keys; the code is sent by message. The yellow arrow indicates the apartment entrance."
+          }
+        ]
+      },
+      de: {
+        title: "Schritt-für-Schritt-Anfahrt",
+        intro: "Nutzen Sie diese Seite, wenn das Navigationssystem das Ziel nicht korrekt findet. Mit Apple Maps können Sie die angegebene Adresse verwenden; mit Google Maps folgen Sie besser den Schritten unten.",
+        mapBtn: "📍 Exakten Standort öffnen",
+        backBtn: "← Zurück zur Anleitung",
+        steps: [
+          {
+            title: "1. Adresse und Navigation",
+            text: "Die Adresse lautet Via Molino Galeotto 21, Pavullo nel Frignano. Wenn Sie Apple Maps verwenden, führt Sie die Adresse direkt vor das Tor. Wenn Sie Google Maps verwenden, geben Sie Via Molino Galeotto 2, Pavullo nel Frignano ein und folgen Sie dann den nächsten Schritten."
+          },
+          {
+            title: "2. Von Modena über die SS12",
+            text: "Wenn Sie von Modena über die SS12, Via Giardini, kommen, weist das Navigationssystem Sie an, kurz nach einem kleinen Tunnel bei einem roten Haus rechts abzubiegen."
+          },
+          {
+            title: "3. Der Straße folgen",
+            text: "Fahren Sie diese Straße weiter und passieren Sie mehrere Gebäude auf der rechten und linken Seite. Sie müssen den gelben Pfeil erreichen. An einer Stelle kann die Straße wie ein Feldweg wirken, sie ist aber asphaltiert: Folgen Sie weiter der Hauptstraße."
+          },
+          {
+            title: "4. Ankunft und Keybox",
+            text: "Das letzte Stück Straße ist nicht perfekt, weil die Erneuerung des Straßenbelags noch aussteht. Parken Sie dort, wo es Ihnen am bequemsten erscheint. Beim roten Pfeil finden Sie die Keybox mit den Schlüsseln; der Code wird per Nachricht gesendet. Der gelbe Pfeil zeigt den Eingang der Wohnung."
+          }
+        ]
+      },
+      fr: {
+        title: "Instructions étape par étape",
+        intro: "Utilisez cette page lorsque le navigateur ne trouve pas correctement la destination. Avec Apple Plans, vous pouvez utiliser l’adresse indiquée; avec Google Maps, il vaut mieux suivre les étapes ci-dessous.",
+        mapBtn: "📍 Ouvrir la position exacte",
+        backBtn: "← Retour au guide",
+        steps: [
+          {
+            title: "1. Adresse et navigateur",
+            text: "L’adresse est Via Molino Galeotto 21, Pavullo nel Frignano. Avec Apple Plans, l’adresse vous amène devant le portail. Avec Google Maps, saisissez Via Molino Galeotto 2, Pavullo nel Frignano, puis suivez les étapes suivantes."
+          },
+          {
+            title: "2. Depuis Modène par la SS12",
+            text: "En arrivant de Modène par la SS12, Via Giardini, le navigateur vous indiquera de tourner à droite près d’une maison rouge, juste après un petit tunnel."
+          },
+          {
+            title: "3. Continuez sur la route",
+            text: "Prenez cette route et continuez en passant plusieurs bâtiments à droite et à gauche. Vous devez arriver à la flèche jaune. À un moment, la route peut sembler non goudronnée, mais elle est asphaltée: continuez sur la route principale."
+          },
+          {
+            title: "4. Arrivée et keybox",
+            text: "Le dernier tronçon de route n’est pas parfait car la réfection du revêtement est encore en attente. Garez-vous où cela vous semble le plus pratique. Là où vous voyez la flèche rouge, vous trouverez la keybox avec les clés; le code est envoyé par message. La flèche jaune indique l’entrée de l’appartement."
+          }
+        ]
+      },
+      es: {
+        title: "Instrucciones paso a paso",
+        intro: "Usa esta página cuando el navegador no encuentre correctamente el destino. Con Apple Maps puedes usar la dirección indicada; con Google Maps es mejor seguir los pasos de abajo.",
+        mapBtn: "📍 Abrir ubicación exacta",
+        backBtn: "← Volver a la guía",
+        steps: [
+          {
+            title: "1. Dirección y navegador",
+            text: "La dirección es Via Molino Galeotto 21, Pavullo nel Frignano. Si usas Apple Maps, la dirección te lleva justo delante de la puerta. Si usas Google Maps, introduce Via Molino Galeotto 2, Pavullo nel Frignano, y luego sigue los pasos siguientes."
+          },
+          {
+            title: "2. Desde Módena por la SS12",
+            text: "Llegando desde Módena por la SS12, Via Giardini, el navegador te indicará girar a la derecha cerca de una casa roja, justo después de un pequeño túnel."
+          },
+          {
+            title: "3. Continúa por la carretera",
+            text: "Toma esa carretera y continúa pasando varios edificios a la derecha y a la izquierda. Debes llegar a la flecha amarilla. En un punto la carretera puede parecer sin asfaltar, pero está asfaltada: sigue por la carretera principal."
+          },
+          {
+            title: "4. Llegada y keybox",
+            text: "El último tramo de carretera no está perfecto porque el reasfaltado todavía está pendiente. Aparca donde te resulte más cómodo. Donde veas la flecha roja encontrarás la keybox con las llaves; el código se envía por mensaje. La flecha amarilla indica la entrada del apartamento."
+          }
+        ]
+      }
+    };
+
     function renderList(id, items) {
       document.getElementById(id).innerHTML = items.map(item => `<li>${item}</li>`).join("");
+    }
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
+
+    function renderArrivalPage(lang) {
+      const t = arrivalTranslations[lang] || arrivalTranslations.en;
+      const imageLang = getDocLang(lang);
+
+      document.getElementById("arrival-page-title").textContent = t.title;
+      document.getElementById("arrival-page-intro").textContent = t.intro;
+      document.getElementById("arrival-map-btn").textContent = t.mapBtn;
+      document.getElementById("arrival-back-btn").textContent = t.backBtn;
+      document.querySelectorAll(".arrival-image-set").forEach(set => {
+        set.classList.toggle("active", set.dataset.docLang === imageLang);
+      });
     }
 
     function renderWifi(lang) {
@@ -908,7 +1192,7 @@
       document.getElementById("umbrella-btn").textContent = t.umbrellaBtn;
 
       document.getElementById("rules-btn").href = `house-rules-${docLang}.pdf`;
-      document.getElementById("arrival-btn").href = `arrival-info-${docLang}.pdf`;
+      document.getElementById("arrival-btn").href = "#arrival";
 
       document.getElementById("label-address").textContent = t.labelAddress;
       document.getElementById("label-checkin").textContent = t.labelCheckin;
@@ -957,19 +1241,46 @@
       document.getElementById("ecosystem-title").textContent = t.ecosystemTitle;
       document.getElementById("ecosystem-text").textContent = t.ecosystemText;
       document.getElementById("ecosystem-btn").textContent = t.ecosystemBtn;
+      renderArrivalPage(lang);
 
       document.querySelectorAll(".lang-btn").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
       });
 
-      localStorage.setItem("guestGuideLang", lang);
+      try {
+        localStorage.setItem("guestGuideLang", lang);
+      } catch (error) {
+        // Local file previews can block storage; the guide still works without it.
+      }
+    }
+
+    function syncViewFromHash() {
+      document.body.classList.toggle("arrival-view", window.location.hash === "#arrival");
+      if (window.location.hash === "#arrival") {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }
     }
 
     document.querySelectorAll(".lang-btn").forEach(btn => {
       btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
     });
 
-    setLanguage(localStorage.getItem("guestGuideLang") || "it");
+    document.getElementById("arrival-back-btn").addEventListener("click", () => {
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+      syncViewFromHash();
+    });
+
+    window.addEventListener("hashchange", syncViewFromHash);
+
+    let initialLang = "it";
+    try {
+      initialLang = localStorage.getItem("guestGuideLang") || "it";
+    } catch (error) {
+      initialLang = "it";
+    }
+
+    setLanguage(initialLang);
+    syncViewFromHash();
   </script>
 </body>
 </html>

@@ -118,7 +118,7 @@
     }
 
     .primary-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       margin-top: 22px;
     }
 
@@ -145,6 +145,100 @@
 
     .doc-btn:hover {
       background: #eef2f8;
+    }
+
+    .directions-alert {
+      border: 3px solid #f59e0b;
+      background: #fff7ed;
+    }
+
+    details.directions-accordion {
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-lg);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    details.directions-accordion summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px;
+      color: #7c2d12;
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    details.directions-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.directions-accordion summary::after {
+      content: "+";
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #f59e0b;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    details.directions-accordion[open] summary::after {
+      content: "-";
+    }
+
+    .directions-body {
+      display: grid;
+      gap: 18px;
+      padding: 0 20px 22px;
+    }
+
+    .navigator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .navigator-box {
+      border: 2px solid #fed7aa;
+      border-radius: var(--radius-md);
+      background: #fffaf0;
+      padding: 18px;
+    }
+
+    .navigator-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #9a3412;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .navigator-text {
+      margin: 0;
+      color: #431407;
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .directions-warning {
+      margin: 0;
+      border-radius: var(--radius-md);
+      background: #fef3c7;
+      color: #78350f;
+      padding: 16px;
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 900;
+      line-height: 1.35;
     }
 
     .card {
@@ -371,6 +465,10 @@
         gap: 24px;
       }
 
+      .navigator-grid {
+        grid-template-columns: 1fr;
+      }
+
       .events-actions,
       .arrival-actions {
         grid-template-columns: 1fr;
@@ -429,7 +527,6 @@
         </div>
 
         <div class="button-grid primary-grid">
-          <a class="action-btn" href="https://www.google.com/maps?q=44.35729,10.82317" target="_blank" rel="noopener noreferrer" id="map-btn"></a>
           <a class="action-btn" href="https://wa.me/393290624796" target="_blank" rel="noopener noreferrer" id="whatsapp-btn"></a>
         </div>
 
@@ -440,6 +537,28 @@
           <a class="doc-btn" href="video-umbrella.mp4" target="_blank" rel="noopener noreferrer" id="umbrella-btn"></a>
         </div>
       </div>
+    </section>
+
+    <section class="card directions-alert">
+      <details class="directions-accordion" open>
+        <summary id="directions-summary"></summary>
+        <div class="directions-body">
+          <div class="navigator-grid">
+            <div class="navigator-box">
+              <span class="navigator-label" id="iphone-maps-label"></span>
+              <p class="navigator-text" id="iphone-maps-text"></p>
+            </div>
+            <div class="navigator-box">
+              <span class="navigator-label" id="google-maps-label"></span>
+              <p class="navigator-text" id="google-maps-text"></p>
+            </div>
+          </div>
+          <p class="directions-warning" id="directions-warning"></p>
+          <div class="button-grid">
+            <a class="action-btn" href="#arrival" id="directions-arrival-btn"></a>
+          </div>
+        </div>
+      </details>
     </section>
 
     <section class="card">
@@ -513,12 +632,6 @@
       <ul id="attractions-list"></ul>
     </section>
 
-    <section class="card">
-      <h2 id="map-title"></h2>
-      <p id="map-text"></p>
-      <p><strong id="coords-label"></strong> 44.35729, 10.82317</p>
-    </section>
-
     <section class="card events-card">
       <h2 id="events-title"></h2>
       <p class="section-intro" id="events-text"></p>
@@ -544,7 +657,6 @@
       <h2 id="arrival-page-title"></h2>
       <p class="section-intro" id="arrival-page-intro"></p>
       <div class="button-grid arrival-actions">
-        <a class="action-btn" href="https://www.google.com/maps?q=44.35729,10.82317" target="_blank" rel="noopener noreferrer" id="arrival-map-btn"></a>
         <button class="doc-btn" type="button" id="arrival-back-btn"></button>
       </div>
       <div class="arrival-steps" id="arrival-steps">
@@ -623,6 +735,13 @@
         arrivalBtn: "📘 Istruzioni dettagliate",
         petBtn: "🐾 Regole animali",
         umbrellaBtn: "⛱️ Ombrellone",
+        directionsSummary: "⚠️ Indicazioni navigatori: leggi prima di partire",
+        iphoneMapsLabel: "Mappe di iPhone",
+        iphoneMapsText: "Inserire indirizzo esatto: Via Molino Galeotto 21, Pavullo nel Frignano.",
+        googleMapsLabel: "Google Maps o altri navigatori",
+        googleMapsText: "Impostare indirizzo: Via Molino Galeotto 2, Pavullo nel Frignano.",
+        directionsWarning: "Leggi sempre le istruzioni dettagliate prima di partire: spiegano passo passo dove svoltare e come arrivare correttamente.",
+        directionsArrivalBtn: "📘 Apri istruzioni dettagliate",
         labelAddress: "📍 Indirizzo",
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
@@ -701,6 +820,13 @@
         arrivalBtn: "📘 Detailed instructions",
         petBtn: "🐾 Pet rules",
         umbrellaBtn: "⛱️ Umbrella instructions",
+        directionsSummary: "⚠️ Navigator directions: read before leaving",
+        iphoneMapsLabel: "Apple Maps",
+        iphoneMapsText: "Enter the exact address: Via Molino Galeotto 21, Pavullo nel Frignano.",
+        googleMapsLabel: "Google Maps or other navigators",
+        googleMapsText: "Set the address to: Via Molino Galeotto 2, Pavullo nel Frignano.",
+        directionsWarning: "Always read the detailed instructions before leaving: they explain step by step where to turn and how to arrive correctly.",
+        directionsArrivalBtn: "📘 Open detailed instructions",
         labelAddress: "📍 Address",
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
@@ -779,6 +905,13 @@
         arrivalBtn: "📘 Detaillierte Anweisungen",
         petBtn: "🐾 Regeln für Haustiere",
         umbrellaBtn: "⛱️ Schirm-Anleitung",
+        directionsSummary: "⚠️ Hinweise zur Navigation: bitte vor der Abfahrt lesen",
+        iphoneMapsLabel: "Apple Maps",
+        iphoneMapsText: "Geben Sie die genaue Adresse ein: Via Molino Galeotto 21, Pavullo nel Frignano.",
+        googleMapsLabel: "Google Maps oder andere Navigationssysteme",
+        googleMapsText: "Stellen Sie diese Adresse ein: Via Molino Galeotto 2, Pavullo nel Frignano.",
+        directionsWarning: "Bitte lesen Sie immer die detaillierten Anweisungen vor der Abfahrt: Dort wird Schritt für Schritt erklärt, wo Sie abbiegen und wie Sie korrekt ankommen.",
+        directionsArrivalBtn: "📘 Detaillierte Anweisungen öffnen",
         labelAddress: "📍 Adresse",
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
@@ -857,6 +990,13 @@
         arrivalBtn: "📘 Instructions détaillées",
         petBtn: "🐾 Règles animaux",
         umbrellaBtn: "⛱️ Instructions parasol",
+        directionsSummary: "⚠️ Indications GPS : à lire avant de partir",
+        iphoneMapsLabel: "Apple Plans",
+        iphoneMapsText: "Saisir l’adresse exacte : Via Molino Galeotto 21, Pavullo nel Frignano.",
+        googleMapsLabel: "Google Maps ou autres navigateurs",
+        googleMapsText: "Définir l’adresse : Via Molino Galeotto 2, Pavullo nel Frignano.",
+        directionsWarning: "Lisez toujours les instructions détaillées avant de partir : elles expliquent étape par étape où tourner et comment arriver correctement.",
+        directionsArrivalBtn: "📘 Ouvrir les instructions détaillées",
         labelAddress: "📍 Adresse",
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
@@ -935,6 +1075,13 @@
         arrivalBtn: "📘 Instrucciones detalladas",
         petBtn: "🐾 Normas mascotas",
         umbrellaBtn: "⛱️ Instrucciones sombrilla",
+        directionsSummary: "⚠️ Indicaciones para navegadores: leer antes de salir",
+        iphoneMapsLabel: "Apple Maps",
+        iphoneMapsText: "Introducir la dirección exacta: Via Molino Galeotto 21, Pavullo nel Frignano.",
+        googleMapsLabel: "Google Maps u otros navegadores",
+        googleMapsText: "Configurar la dirección: Via Molino Galeotto 2, Pavullo nel Frignano.",
+        directionsWarning: "Lee siempre las instrucciones detalladas antes de salir: explican paso a paso dónde girar y cómo llegar correctamente.",
+        directionsArrivalBtn: "📘 Abrir instrucciones detalladas",
         labelAddress: "📍 Dirección",
         labelCheckin: "🕒 Check-in",
         labelCheckout: "🕘 Check-out",
@@ -1154,7 +1301,6 @@
 
       document.getElementById("arrival-page-title").textContent = t.title;
       document.getElementById("arrival-page-intro").textContent = t.intro;
-      document.getElementById("arrival-map-btn").textContent = t.mapBtn;
       document.getElementById("arrival-back-btn").textContent = t.backBtn;
       document.querySelectorAll(".arrival-image-set").forEach(set => {
         const isActive = set.dataset.docLang === imageLang;
@@ -1202,13 +1348,19 @@
       document.getElementById("subtitle-1").textContent = t.subtitle1;
       document.getElementById("subtitle-2").textContent = t.subtitle2;
 
-      document.getElementById("map-btn").textContent = t.mapBtn;
       document.getElementById("whatsapp-btn").textContent = t.whatsappBtn;
 
       document.getElementById("rules-btn").textContent = t.rulesBtn;
       document.getElementById("arrival-btn").textContent = t.arrivalBtn;
       document.getElementById("pet-btn").textContent = t.petBtn;
       document.getElementById("umbrella-btn").textContent = t.umbrellaBtn;
+      document.getElementById("directions-summary").textContent = t.directionsSummary;
+      document.getElementById("iphone-maps-label").textContent = t.iphoneMapsLabel;
+      document.getElementById("iphone-maps-text").textContent = t.iphoneMapsText;
+      document.getElementById("google-maps-label").textContent = t.googleMapsLabel;
+      document.getElementById("google-maps-text").textContent = t.googleMapsText;
+      document.getElementById("directions-warning").textContent = t.directionsWarning;
+      document.getElementById("directions-arrival-btn").textContent = t.directionsArrivalBtn;
 
       document.getElementById("rules-btn").href = `house-rules-${docLang}.pdf`;
       document.getElementById("arrival-btn").href = "#arrival";
@@ -1244,10 +1396,6 @@
 
       document.getElementById("attractions-title").textContent = t.attractionsTitle;
       renderList("attractions-list", t.attractionsList);
-
-      document.getElementById("map-title").textContent = t.mapTitle;
-      document.getElementById("map-text").textContent = t.mapText;
-      document.getElementById("coords-label").textContent = t.coordsLabel;
 
       document.getElementById("events-title").textContent = t.eventsTitle;
       document.getElementById("events-text").textContent = t.eventsText;
